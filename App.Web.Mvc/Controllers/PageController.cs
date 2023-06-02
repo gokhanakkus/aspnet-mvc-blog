@@ -2,10 +2,9 @@
 
 namespace App.Web.Mvc.Controllers
 {
-    public class CategoryController : Controller
+    public class PageController : Controller
     {
-        [Route("kategori")]
-        public IActionResult Index(int id, int page)
+        public IActionResult Detail(int id)
         {
             return View();
         }

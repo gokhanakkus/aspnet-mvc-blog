@@ -4,9 +4,19 @@ namespace App.Web.Mvc.Controllers
 {
     public class BlogController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Search(string query, int page)
+        {
+            return View();
+        }
+        [Route("blog")]
+        public IActionResult Detail(int id)
         {
             return View();
         }
     }
+
+    
+    
+        
+    
 }

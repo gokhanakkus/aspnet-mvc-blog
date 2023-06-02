@@ -3,27 +3,29 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Mvc.Areas.Admin.Controllers
 {
-    public class PostsController : Controller
+    [Area("Admin")]
+    public class BlogsController : Controller
     {
-        // GET: PostsController
+        // GET: BlogsController
         public ActionResult Index()
         {
+            
             return View();
         }
 
-        // GET: PostsController/Details/5
+        // GET: BlogsController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: PostsController/Create
+        // GET: BlogsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PostsController/Create
+        // POST: BlogsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +40,13 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             }
         }
 
-        // GET: PostsController/Edit/5
+        // GET: BlogsController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: PostsController/Edit/5
+        // POST: BlogsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +61,13 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             }
         }
 
-        // GET: PostsController/Delete/5
+        // GET: BlogsController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: PostsController/Delete/5
+        // POST: BlogsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
