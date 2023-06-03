@@ -2,10 +2,11 @@
 
 namespace App.Web.Mvc.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class MainController : BaseAdminController
+    
+    public class BaseAdminController : Controller
     {
-        public IActionResult Index()
+        [Area("Admin")]
+        public IActionResult BaseAdminIndex()
         {
             return View();
         }

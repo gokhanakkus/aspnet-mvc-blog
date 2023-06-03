@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace App.Web.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BlogsController : Controller
+    public class BlogsController : BaseAdminController
     {
         // GET: BlogsController
         public ActionResult Index()

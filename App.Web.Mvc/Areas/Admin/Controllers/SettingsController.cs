@@ -3,7 +3,7 @@
 namespace App.Web.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class SettingsController : Controller
+    public class SettingsController : BaseAdminController
     {
         public IActionResult Index()
         {
