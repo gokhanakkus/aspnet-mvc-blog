@@ -5,6 +5,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
     
     public class BaseAdminController : Controller
     {
+        
         [Area("Admin")]
         public IActionResult BaseAdminIndex()
         {
