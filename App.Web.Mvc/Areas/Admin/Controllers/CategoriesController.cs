@@ -6,8 +6,9 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoriesController : BaseAdminController
     {
-        // GET: CategoriesController
-        public ActionResult Index()
+		// GET: CategoriesController
+		[Route("Kategoriler")]
+		public ActionResult Index()
         {
             return View();
         }

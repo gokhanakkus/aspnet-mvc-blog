@@ -4,7 +4,8 @@ namespace App.Web.Mvc.Controllers
 {
     public class ContactController : Controller
     {
-        public IActionResult Index()
+		[Route("Iletisim")]
+		public IActionResult Index()
         {
             return View();
         }

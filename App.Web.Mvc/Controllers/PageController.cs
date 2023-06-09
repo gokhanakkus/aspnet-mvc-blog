@@ -4,7 +4,8 @@ namespace App.Web.Mvc.Controllers
 {
     public class PageController : Controller
     {
-        public IActionResult Detail(int id)
+		[Route("Detay")]// page detail sayfasına route ile detay yazdım(task6)
+		public IActionResult Detail(int id)
         {
             return View();
         }

@@ -4,17 +4,20 @@ namespace App.Web.Mvc.Controllers
 {
     public class Auth : Controller
     {
-        public IActionResult Register()
+		[Route("KayıtOl")]
+		public IActionResult Register()
         {
             return View();
         }
-        
-        public IActionResult Login(string redirectUrl)
+
+		[Route("GirisYap")]
+		public IActionResult Login(string redirectUrl)
         {
             return View();
         }
-        
-        public IActionResult ForgotPassword()
+
+		[Route("SifremiUnuttum")]
+		public IActionResult ForgotPassword()
         {
             return View();
         }

@@ -4,7 +4,8 @@ namespace App.Web.Mvc.Controllers
 {
     public class PostController : Controller
     {
-        public IActionResult Index()
+		[Route("Icerik")]
+		public IActionResult Index()
         {
             return View();
         }
