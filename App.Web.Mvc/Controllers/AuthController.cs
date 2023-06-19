@@ -2,7 +2,7 @@
 
 namespace App.Web.Mvc.Controllers
 {
-    public class Auth : Controller
+    public class AuthController : Controller
     {
 		[Route("KayıtOl")]
 		public IActionResult Register()
