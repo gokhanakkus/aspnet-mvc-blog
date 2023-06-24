@@ -4261,19 +4261,20 @@ textarea.form-control-lg {
 }
 
 .card-img-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: var(--bs-card-img-overlay-padding);
-  border-radius: var(--bs-card-inner-border-radius);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: var(--bs-card-img-overlay-padding);
+    border-radius: var(--bs-card-inner-border-radius);
+  
 }
 
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  width: 100%;
+    width: 100%;
 }
 
 .card-img,

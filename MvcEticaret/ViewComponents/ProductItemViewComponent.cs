@@ -6,9 +6,9 @@ namespace MvcEticaret.ViewComponents
 {
     public class ProductItemViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(string title, int starCount, double oldPrice, double price, string imageUrl, bool isSale)
+        public IViewComponentResult Invoke(string title, int starCount, decimal oldPrice, decimal price, string imageUrl, bool isSale)
         {
-            var product = new Product()
+            var product = new ProductItemViewModel()
             {
                 Title = title,
                 Price = price,
