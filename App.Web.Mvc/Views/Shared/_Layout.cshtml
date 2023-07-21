@@ -23,16 +23,16 @@
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
-
-    <partial name="_HeaderPartialView" />
-
+    
+    @await Component.InvokeAsync("Navbar")
+    
     <div class="container-flex">
         <main role="main" class="pb-0">
             @RenderBody()
         </main>
     </div>
 
-    <partial name="_FooterPartialView" />
+    @await Component.InvokeAsync("Footer")
 
     <script src="~/js/jquery.js"></script>
     <!-- Bootstrap jQuery -->
@@ -52,12 +52,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 
-    <script>
-        $(document).ready(function () {
-            $(".navbar-toggler").click(function () {
-                $("#navbar-collapse").slideToggle();
-            });
-        });
-    </script>
 </body>
 </html>
