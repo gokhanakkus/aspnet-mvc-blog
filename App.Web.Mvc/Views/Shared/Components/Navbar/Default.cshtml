@@ -9,7 +9,7 @@
             </div>
             <div class="search-wrap">
                 <div class="overlay">
-                    <form action="#" class="search-form">
+                    <form asp-action="Search" asp-controller="Blog"  class="search-form">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-10 col-9">
@@ -35,18 +35,10 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbar-collapse">
                         <ul id="menu" class="menu navbar-nav mx-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">
                                     Home
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="index.html">Home 1</a>
-                                    <a class="dropdown-item" href="index-2.html">Home 2</a>
-                                    <a class="dropdown-item" href="index-3.html">Home 3</a>
-                                    <a class="dropdown-item" href="index-4.html">Home 4</a>
-                                    <a class="dropdown-item" href="index-5.html">Home 5</a>
-                                    <a class="dropdown-item" href="index-6.html">Home 6</a>
-                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,23 +46,26 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                     <a class="dropdown-item" asp-controller="Blog" asp-action="Detail">Detail</a>
-                                    <a class="dropdown-item" href="standard-left-sidebar.html">Standard Left Sidebar</a>
-                                    <a class="dropdown-item" href="standard-right-sidebar.html">Standard Right Sidebar</a>
+                                    <a class="dropdown-item" asp-controller="Blog" asp-action="Search">Search</a>
                                 </div>
                             </li>
                             <li class="nav-item"><a asp-controller="Page" asp-action="Detail" class="nav-link">About</a></li>
-                            <li class="nav-item"><a asp-controller="Category" asp-action="Index" class="nav-link">Category</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Post Format
+                                    Category
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                    <a class="dropdown-item" asp-controller="Post" asp-action="Index">Post</a>
-                                    <a class="dropdown-item" asp-controller="Post" asp-action="Index">Audio Format</a>
-                                    <a class="dropdown-item" asp-controller="Post" asp-action="Index">Quote Format</a>
-                                    <a class="dropdown-item" asp-controller="Post" asp-action="Index">Gallery Format</a>
-                                    <a class="dropdown-item" asp-controller="Post" asp-action="Index">Image Format</a>
+                                    <a asp-action="Lifestyle" asp-controller="Category">Lifestyle</a>
+                                    <a asp-action="Travel" asp-controller="Category">Travel</a>
+                                    <a asp-action="Explore" asp-controller="Category">Explore</a>
+                                    <a asp-action="Weekends" asp-controller="Category">Weekends</a>
+                                    <a asp-action="Health" asp-controller="Category">Health</a>
                                 </div>
+                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Post" asp-action="Index">
+                                    Post Format
+                                </a>
                             </li>
                             <li class="nav-item"><a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a></li>
                         </ul>
@@ -78,10 +73,10 @@
                             <div class="search_toggle d-none d-lg-block"><i class="ti-search"></i></div>
                         </div>
                         <ul class="list-inline mb-0 d-block d-lg-none">
-                            <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.facebook.com/"><i class="ti-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="https://twitter.com/"><i class="ti-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/"><i class="ti-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="https://tr.pinterest.com/"><i class="ti-pinterest"></i></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -105,4 +100,3 @@
         </div>
     </div>
 </header>
-
