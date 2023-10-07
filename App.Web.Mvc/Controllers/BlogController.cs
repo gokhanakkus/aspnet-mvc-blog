@@ -8,15 +8,11 @@ namespace App.Web.Mvc.Controllers
         {
             return View();
         }
-        [Route("Blog")] //blog controller / detail viewına route ile blog yazdım.(task5)
+        [Route("Blog")] //blog controller / detail viewına route ile blog yazdım
         public IActionResult Detail(int id)
         {
             return View();
         }
     }
 
-    
-    
-        
-    
 }
