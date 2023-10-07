@@ -6,80 +6,22 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoriesController : BaseAdminController
     {
-		// GET: CategoriesController
-		[Route("Kategoriler")]
-		public ActionResult Index()
+        public IActionResult Add()
+        {
+            return View();
+        }
+        public IActionResult DeletedCategory()
+        {
+            return View();
+        }
+        public IActionResult Index()
         {
             return View();
         }
 
-        // GET: CategoriesController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Update()
         {
             return View();
-        }
-
-        // GET: CategoriesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CategoriesController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CategoriesController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CategoriesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CategoriesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CategoriesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
