@@ -11,4 +11,8 @@
     <ProjectReference Include="..\App.Web.Entity\App.Web.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValidationRules\" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using App.Web.Entity.Abstract;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -7,15 +9,33 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class Post
+    public class Post : BaseAuiditEntity
     {
-        [Key]
-        public int PostID { get; set; }
-        public string PostTitle { get; set; }
-        public string PostContent { get; set; }
-        public string PostThumbnailImage { get; set; }
-        public string PostImage { get; set; }
-        public DateTime PostCreateDate { get; set; }
-        public bool PostStatus { get; set;}
+        [Required]
+        public int UserId { get; set; }
+
+        [ForeignKey(nameof(UserId))]
+        public virtual User? User { get; set; }
+
+        [MaxLength(200), Column(name: "Başlık", TypeName = "nvarchar")]
+        public string Title { get; set; }
+
+        [MinLength(200), MaxLength(2000), Column(name: "İçerik", TypeName = "nvarchar")]
+        public string Content { get; set; }
+
+        public virtual ICollection<PostComment> Comments { get; set; }
+        public virtual ICollection<CategoryPost> CategoryPosts { get; set; }
+        public virtual ICollection<PostImage> Images { get; set; }
     }
+    //public class Post
+    //{
+    //    public int Id { get; set; }
+    //    public int UserId { get; set; }
+    //    public User User { get; set; }
+    //    public string Title { get; set; }
+    //    public string Content { get; set; }
+    //    public List<CategoryPost> CategoryPosts { get; set; }
+    //    public List<PostImage> Images { get; set; }
+    //    public List<PostComment> Comments { get; set; }
+    //}
 }
