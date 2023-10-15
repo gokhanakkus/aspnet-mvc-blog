@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class Page : BaseAuiditEntity
+    public class Page : BaseAuditEntity
     {
 
         [Required, MaxLength(200), Column(name: "Başlık", TypeName = "nvarchar")]

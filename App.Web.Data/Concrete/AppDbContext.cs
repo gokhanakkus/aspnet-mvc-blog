@@ -58,33 +58,47 @@ namespace App.Web.Data.Concrete
                 .HasMany(u => u.Posts)
                 .WithOne(p => p.User)
                 .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Comments)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<Role>()
+                .HasMany(r => r.Users)
+                .WithOne(u => u.Role)
+                .HasForeignKey(p => p.RoleId)
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Post>()
                 .HasMany(p => p.Comments)
                 .WithOne(pc => pc.Post)
                 .HasForeignKey(pc => pc.PostId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<CategoryPost>()
                 .HasOne(cp => cp.Category)
-                .WithMany()
+                .WithMany(x => x.CategoryPosts)
                 .HasForeignKey(cp => cp.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<CategoryPost>()
                 .HasOne(cp => cp.Post)
-                .WithMany()
+                .WithMany(x => x.CategoryPosts)
                 .HasForeignKey(cp => cp.PostId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<PostImage>()
                 .HasOne(pi => pi.Post)
                 .WithMany(p => p.Images)
-                .HasForeignKey(pi => pi.PostId);
+                .HasForeignKey(pi => pi.PostId)
+                .OnDelete(DeleteBehavior.ClientCascade);
 
-            modelBuilder.Entity<CategoryPost>()
-                .HasKey(cp => new { cp.CategoryId, cp.PostId });
+            //modelBuilder.Entity<CategoryPost>()
+            //    .HasKey(cp => new { cp.CategoryId, cp.PostId }); // Eğer index oluşturmak amaçlanıyorsa HasIndex'le olması gerekiyor gibi
+
 
             base.OnModelCreating(modelBuilder);
         }

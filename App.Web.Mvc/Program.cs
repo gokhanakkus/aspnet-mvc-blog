@@ -58,7 +58,7 @@ app.MapControllerRoute(
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    //await context.Database.EnsureDeletedAsync();
+    await context.Database.EnsureDeletedAsync();
 
     if (await context.Database.EnsureCreatedAsync())
     {

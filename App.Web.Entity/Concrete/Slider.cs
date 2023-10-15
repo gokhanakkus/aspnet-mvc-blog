@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class Slider : BaseAuiditEntity
+    public class Slider : BaseAuditEntity
     {
         public string? Name { get; set; }
         public string? Title { get; set; }

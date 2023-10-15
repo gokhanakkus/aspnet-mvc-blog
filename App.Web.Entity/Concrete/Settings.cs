@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class Settings : BaseAuiditEntity
+    public class Settings : BaseAuditEntity
     {
         public int UserId { get; set; }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Abstract
 {
-    public abstract class BaseAuiditEntity : BaseEntity, IAuiditEntity
+    public abstract class BaseAuditEntity : BaseEntity, IAuiditEntity
     {
         [Required, Column(name: "Yayınlanma Tarihi", TypeName = "datetime")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
