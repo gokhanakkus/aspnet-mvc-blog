@@ -9,18 +9,14 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class PostComment : BaseAuiditEntity
+    public class PostComment : BaseAuditEntity
     {
-        [Required]
         public int PostId { get; set; }
 
-        [ForeignKey(nameof(PostId))]
         public virtual Post? Post { get; set; }
 
-        [Required]
         public int UserId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
         public virtual User? User { get; set; }
 
         [Column(name: "Yorum", TypeName = "text")]

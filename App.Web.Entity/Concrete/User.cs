@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class User : BaseAuiditEntity
+    public class User : BaseAuditEntity
     {
 
         [Required, MaxLength(200), Column(TypeName = "nvarchar"), DataType(DataType.EmailAddress)]
@@ -25,13 +25,12 @@ namespace App.Web.Entity.Concrete
         [MaxLength(100), Column(name: "Şehir", TypeName = "nvarchar")]
         public string? City { get; set; }
 
-        [Required]
         public int RoleId { get; set; }
 
-        [ForeignKey(nameof(RoleId))]
         public virtual Role? Role { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<PostComment> Comments { get; set; }
     }
     //public class User
     //{

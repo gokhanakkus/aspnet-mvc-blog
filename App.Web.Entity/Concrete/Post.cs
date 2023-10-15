@@ -9,13 +9,11 @@ using System.Threading.Tasks;
 
 namespace App.Web.Entity.Concrete
 {
-    public class Post : BaseAuiditEntity
+    public class Post : BaseAuditEntity
     {
-        [Required]
         public int UserId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
-        public virtual User? User { get; set; }
+        public virtual User User { get; set; } = null!;
 
         [MaxLength(200), Column(name: "Başlık", TypeName = "nvarchar")]
         public string Title { get; set; }
