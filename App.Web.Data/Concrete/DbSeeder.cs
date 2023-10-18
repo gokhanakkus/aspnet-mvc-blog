@@ -13,15 +13,15 @@ namespace App.Web.Data.Concrete
         public static void Seed(AppDbContext context)
         {
             SeedCategories(context);
+            SeedRoles(context);
+            SeedUsers(context);
             SeedPosts(context);
-            SeedUsersAndRoles(context);
             SeedPostImages(context);
             SeedCategoryPosts(context);
             SeedPages(context);
             SeedPostComments(context);
-            SeedSlider(context);
+            SeedSliderItems(context);
         }
-
         private static void SeedCategories(AppDbContext context)
         {
             if (!context.Categories.Any())
@@ -33,6 +33,7 @@ namespace App.Web.Data.Concrete
                     new Category { Name = "LifeStyle" },
                     new Category { Name = "Health" },
                     new Category { Name = "Explore" },
+                    new Category { Name = "Experience" },
 
                 };
 
@@ -40,98 +41,57 @@ namespace App.Web.Data.Concrete
                 context.SaveChanges();
             }
         }
-
-        private static void SeedPosts(AppDbContext context)
-        {
-            if (!context.Posts.Any())
-            {
-                var posts = new[]
-                {
-                    new Post { UserId = 1, Title = "Travel", Content = "How to Make list for travelling alone" },
-                    new Post { UserId = 2, Title = "Weekends", Content = "A Simple Way to Feel Like Home When You Travel" },
-                    new Post { UserId = 3, Title = "LifeStyle", Content = "What Type of Traveller Are You?" },
-                    new Post { UserId = 1, Title = "Health", Content = "How to Plan your Trip the Right Way" },
-                    new Post { UserId = 2, Title = "Explore", Content = "8 Powerful Ways to Add Vibrant Colour to Your Life" },
-                    //new Post {Title="Explore" ,Content="The best place to explore to enjoy",Date="June 15, 2019" ,Images="Img/news/f1.jpg" },
-                    //new Post{Title="Lifestyle" ,Content="How to Make list for travelling alone",Date="September 15, 2019" ,Images="Img/news/f2.jpg" },
-                    //new Post{Title="Food" ,Content="5 ingredient cilantro vinaigrette",Date="September 15, 2019"  ,Images="Img/news/f3.jpg"},
-                    //new Post{Title="Explore" ,Content="A Simple Way to Feel Like Home When You Travel",Date="March 20, 2019"  ,Images="Img/news/ f4.jpg"},
-                    //new Post{Title="March 20, 2019" ,Content="What Type of Traveller Are You?",Date="September 15, 2019" ,Images="Img/news/f5.jpg"},
-                    //new Post{Title="Experience" ,Content="A Road Trip Review of the 2018",Date="July 10, 2019" ,ImageUrl="Img/news/f6.jpg" },
-                    //new Post{Title="music" ,Content="Portugal’s Sunset summer vission",Date="September 15, 2019" ,ImageUrl="Img/news/f7.jpg" },
-                    //new Post{Title="beauty" ,Content="The best soft Tropical Getaway",Date="March 12, 2019"  ,ImageUrl="Img/news/f8.jpg"},
-                    //new Post{Title="Travel" ,Content="Memoriable Paris Girls Trip",Date="April 19, 2019"  ,ImageUrl="Img/news/f9.jpg"},
-                    //new Post{Title="Experience" ,Content="How to Plan your Trip the Right Way" ,Date="February 15, 2019",ImageUrl="Img/news/f10.jpg"},
-                    //new Post{Title="Travel" ,Content="8 Powerful Ways to Add Vibrant Colour to Your Life" ,Date="April 19, 2019"  ,ImageUrl="Img/news/ f11.jpg"},
-                    //new Post{Title="Lifestyle" ,Content="The best to-do list to help boost your productivity" ,Date="October 2, 2019",ImageUrl="Img/news/  f2.jpg"}
-                };
-
-                context.Posts.AddRange(posts);
-                context.SaveChanges();
-            }
-        }
-
-        private static void SeedUsersAndRoles(AppDbContext context)
+        private static void SeedRoles(AppDbContext context)
         {
             if (!context.Roles.Any())
             {
-                var roleAdmin = new Role
+                var roles = new List<Role>
                 {
-                    Name = "Admin"
+                    new Role { Name = "Admin" },
+                    new Role { Name = "Author" },
+                    new Role { Name = "User" }
                 };
 
-                context.Roles.Add(roleAdmin);
-
-                var roleAuthor = new Role
-                {
-                    Name = "Author"
-                };
-
-                context.Roles.Add(roleAuthor);
-
-                var roleUser = new Role
-                {
-                    Name = "User"
-                };
-
-                context.Roles.Add(roleUser);
+                context.Roles.AddRange(roles);
+                context.SaveChanges();
             }
-
+        }
+        private static void SeedUsers(AppDbContext context)
+        {
             if (!context.Users.Any())
             {
-                var adminUser = new User
+                var users = new List<User>
                 {
-                    Name = "admin",
-                    Email = "admin@blog.com",
-                    Password = "1234",
-                    CreatedAt = DateTime.UtcNow,
-                    RoleId = context.Roles.Single(r => r.Name == "Admin").Id
+                    new User
+                    {
+                        Name = "admin",
+                        Email = "admin@blog.com",
+                        Password = "1234",
+                        CreatedAt = DateTime.UtcNow,
+                        RoleId = context.Roles.Single(r => r.Name == "Admin").Id
+                    },
+                    new User
+                    {
+                        Name = "user",
+                        Email = "user@blog.com",
+                        Password = "1234",
+                        CreatedAt = DateTime.UtcNow,
+                        RoleId = context.Roles.Single(r => r.Name == "User").Id
+                    },
+                    new User
+                    {
+                        Name = "author",
+                        Email = "author@blog.com",
+                        Password = "1234",
+                        CreatedAt = DateTime.UtcNow,
+                        RoleId = context.Roles.Single(r => r.Name == "Author").Id
+                    }
                 };
 
-                var userUser = new User
-                {
-                    Name = "user",
-                    Email = "user@blog.com",
-                    Password = "1234",
-                    CreatedAt = DateTime.UtcNow,
-                    RoleId = context.Roles.Single(r => r.Name == "User").Id
-                };
-
-                var authorUser = new User
-                {
-                    Name = "author",
-                    Email = "author@blog.com",
-                    Password = "1234",
-                    CreatedAt = DateTime.UtcNow,
-                    RoleId = context.Roles.Single(r => r.Name == "Author").Id
-                };
-
-                context.Users.AddRange(adminUser, userUser, authorUser);
+                context.Users.AddRange(users);
+                context.SaveChanges();
             }
-
-            context.SaveChanges();
         }
-
         private static void SeedPostImages(AppDbContext context)
         {
             if (!context.PostImages.Any())
@@ -143,6 +103,7 @@ namespace App.Web.Data.Concrete
                     new PostImage { PostId = 3, ImagePath = "Img/news/f3.jpg" },
                     new PostImage { PostId = 4, ImagePath = "Img/news/f4.jpg" },
                     new PostImage { PostId = 5, ImagePath = "Img/news/f5.jpg" },
+                    new PostImage { PostId = 6, ImagePath = "Img/news/f6.jpg" },
 
                 };
 
@@ -162,6 +123,7 @@ namespace App.Web.Data.Concrete
                     new CategoryPost { CategoryId = 3, PostId = 3 },
                     new CategoryPost { CategoryId = 4, PostId = 4 },
                     new CategoryPost { CategoryId = 5, PostId = 5 },
+                    new CategoryPost { CategoryId = 6, PostId = 6 },
 
                 };
 
@@ -207,55 +169,56 @@ namespace App.Web.Data.Concrete
 
             }
         }
-
-        private static void SeedSlider(AppDbContext context)
+        private static void SeedSliderItems(AppDbContext context)
         {
-            var SliderItems = new[]              
+            if (!context.SliderItems.Any())
             {
-                new Slider()
+                var sliderItems = new List<Slider>
                 {
-                    Name = "Trip to California",
-                    Title= "Travel",
-                    ImageUrl= "/Img/slider/slider1.jpg",
-                    Date = "January 2, 2023"
-                },
+                    new Slider
+                    {
+                        Name = "Trip to California",
+                        Title = "Travel",
+                        ImageUrl = "/Img/slider/slider1.jpg",
+                        Date = new DateTime(2023, 1, 2)
+                    },
+                    new Slider
+                    {
+                        Name = "Our Favorite Weekend Getaways",
+                        Title = "Weekends",
+                        ImageUrl = "/Img/slider/slider2.jpg",
+                        Date = new DateTime(2019, 9, 15)
+                    },
+                    new Slider
+                    {
+                        Name = "What Type of Traveler Are You?",
+                        Title = "LifeStyle",
+                        ImageUrl = "/Img/slider/slider3.jpg",
+                        Date = new DateTime(2023, 9, 23)
+                    }
+                };
 
-                new Slider()
+                context.SliderItems.AddRange(sliderItems);
+                context.SaveChanges();
+            }
+        }
+        private static void SeedPosts(AppDbContext context)
+        {
+            if (!context.Posts.Any())
+            {
+                var posts = new List<Post>
                 {
-                    Name = "Our Favorite Weekend Getaways",
-                    Title= "Weekends",
-                    ImageUrl= "/Img/slider/slider2.jpg",
-                    Date = "September 15, 2019"
-                },
+                    new Post { UserId = 1, Title = "Travel", Content = "How to Make a List for Traveling Alone" },
+                    new Post { UserId = 2, Title = "Weekends", Content = "A Simple Way to Feel Like Home When You Travel" },
+                    new Post { UserId = 3, Title = "LifeStyle", Content = "What Type of Traveler Are You?" },
+                    new Post { UserId = 1, Title = "Health", Content = "How to Plan Your Trip the Right Way" },
+                    new Post { UserId = 2, Title = "Explore", Content = "8 Powerful Ways to Add Vibrant Color to Your Life" },
+                    new Post { UserId = 3, Title ="Experience" ,Content="A Road Trip Review of the 2023" },  
+                };
 
-                new Slider()
-                {
-                    Name = "Tips for Taking a Long-term Trip",
-                    Title= "LifeStyle",
-                    ImageUrl= "/Img/slider/slider3.jpg",
-                    Date = "June 12, 2019"
-                },
-
-                new Slider()
-                {
-                    Name = "Tips for Taking a Long-term Trip",
-                    Title= "LifeStyle",
-                    ImageUrl= "/Img/slider/slider1.jpg",
-                    Date = "September 18, 2022"
-                },
-
-                new Slider()
-                {
-                    Name = "Tips for Taking a Long-term Trip",
-                    Title= "LifeStyle",
-                    ImageUrl= "/Img/slider/slider2.jpg",
-                    Date = "September 21, 2023"
-                },
-
-            };
-            context.SliderItems.AddRange(SliderItems);
-            context.SaveChanges();
-
-        }    
+                context.Posts.AddRange(posts);
+                context.SaveChanges();
+            }
+        }
     }
 }
