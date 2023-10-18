@@ -1,18 +1,19 @@
-﻿namespace App.Web.Mvc.Models
+﻿using System.ComponentModel.DataAnnotations;
+using App.Web.Entity.Concrete;
+
+namespace App.Web.Mvc.Models
 {
     public class Auth
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
+        [EmailAddress, DataType(DataType.EmailAddress), Required(ErrorMessage = "{0} boş bırakılamaz.")]
         public string Email { get; set; }
-        public string Phone { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string Region { get; set; }
-        public string PostalCode { get; set; }
-        public string Country { get; set; }
 
+        [MaxLength(100), DataType(DataType.Password), Required(ErrorMessage = "{0} boş bırakılamaz!")]
+        public string Password { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string? redirectUrl { get; set; }
+        public User User { get; set; }
+        
     }
 }
