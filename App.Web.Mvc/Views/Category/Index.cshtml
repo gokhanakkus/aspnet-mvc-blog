@@ -1,0 +1,62 @@
+﻿@model CategoryViewModel
+@{
+	ViewData["Title"] = Model.Category.Name + " Kategorideki Bloglar";
+}
+
+<div class="breadcumb-area section_padding_50">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="breacumb-content d-flex align-items-center justify-content-between">
+					<!-- Post Tag -->
+					<div class="gazette-post-tag">
+						<a asp-controller="Category" asp-action="Index" asp-route-id="@Model.Category.Id">@Model.Category.Name</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="catagory-welcome-post-area section_padding_100">
+	<div class="container">
+		<div class="row">
+			@foreach (var item in Model.Post)
+			{
+				<div class="col-12 col-md-4">
+					<!-- Gazette Welcome Post -->
+					<div class="gazette-welcome-post">
+						<!-- Post Tag -->
+						<div class="gazette-post-tag">
+							<a asp-controller="Category" asp-action="Index" asp-route-id="@Model.Category.Id">@Model.Category.Name</a>
+						</div>
+						<h2 class="font-pt">@item.Post.Title</h2>
+						<p class="gazette-post-date">@item.Post.CreatedAt.ToString("MMMM dd, yyyy")</p>
+						<!-- Post Thumbnail -->
+						@if (item.PostImage is not null)
+						{
+							<div class="blog-post-thumbnail my-5">
+								<img src="@item.PostImage.ImagePath" alt="post-thumb">
+							</div>
+						}
+						else
+						{
+							<div class="blog-post-thumbnail my-5">
+								<img src="~\Img\fashion\img-1.jpg" alt="post-thumb">
+							</div>
+						}
+
+						<!-- Post Excerpt -->
+						<p>@item.Post.Content.Substring(0,100)</p>
+						<!-- Reading More -->
+						<div class="post-continue-reading-share mt-30">
+							<div class="post-continue-btn">
+								<a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id" class="font-pt">Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>	
+	</div>
+</section>

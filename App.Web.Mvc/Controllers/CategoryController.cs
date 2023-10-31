@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using App.Web.Data.Concrete;
+using App.Web.Entity.Concrete;
+using App.Web.Mvc.Models;
+using App.Web.Mvc.Utils;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +12,46 @@ namespace App.Web.Mvc.Controllers
 {
     public class CategoryController : Controller
     {
-        public IActionResult Travel(int id, int page)
+        private readonly AppDbContext _context;
+
+        public CategoryController(AppDbContext context)
         {
-            return View();
+            _context = context;
         }
-        public IActionResult Weekends(int id, int page)
+        [HttpGet]
+        public IActionResult Index([FromRoute] int id, [FromRoute] string title)
         {
-            return View();
-        }
-        public IActionResult Lifestyle(int id, int page)
-        {
-            return View();
-        }
-        public IActionResult Explore(int id, int page)
-        {
-            return View();
-        }
-        public IActionResult Health(int id, int page)
-        {
-            return View();
+            List<int> Ids = (
+                from CategoryPost in _context.CategoryPosts
+                where CategoryPost.CategoryId == id
+                select CategoryPost.PostId
+                ).ToList();
+            List<int> uniqueids = Ids.ToArray().Distinct().ToList();
+            List<Post> posts = new List<Post>();
+            List<HomeViewModel> modelnews = new List<HomeViewModel>();
+            foreach (int i in uniqueids)
+            {
+
+                var homeview = new HomeViewModel()
+                {
+                    Category = _context.Categories.Find(id),
+                    Post = _context.Posts.Where(x => x.Id == i).FirstOrDefault(),
+                    PostImage = _context.PostImages.Where(x => x.PostId == i).FirstOrDefault()
+                };
+                modelnews.Add(homeview);
+
+
+            }
+            var model = new CategoryViewModel()
+            {
+                Category = _context.Categories.Where(c => c.Id == id).FirstOrDefault(),
+                Post = modelnews
+            };
+            if (title != UrlFriend.SeoName(model.Category.Name))
+            {
+                return RedirectToAction("Index", new { id = id, title = UrlFriend.SeoName(model.Category.Name) });
+            }
+            return View(model);
         }
     }
 }

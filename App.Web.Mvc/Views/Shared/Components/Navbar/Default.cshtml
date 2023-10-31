@@ -9,11 +9,12 @@
             </div>
             <div class="search-wrap">
                 <div class="overlay">
-                    <form asp-action="Search" asp-controller="Blog"  class="search-form">
+                    <form asp-action="Search" asp-controller="Blog" method="get" class="search-form">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-10 col-9">
-                                    <input type="text" class="form-control" placeholder="Search..." />
+                                    <input id="search" name="q" type="text" class="form-control" placeholder="Search..." />
+                                    <input class="d-none" type="submit" value="submit">
                                 </div>
                                 <div class="col-md-2 col-3 text-right">
                                     <div class="search_toggle toggle-wrap d-inline-block">
@@ -77,21 +78,29 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="header-socials-2 text-right d-none d-lg-block">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/" target="_blank"><i class="ti-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
-                        <li class="list-inline-item"><a href="https://tr.pinterest.com/" target="_blank"><i class="ti-pinterest"></i></a></li
+            <div class="header-socials-2 text-right d-none d-lg-block">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="ti-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="https://twitter.com/" target="_blank"><i class="ti-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="ti-linkedin"></i></a></li>
+                    <li class="list-inline-item me-3"><a href="https://tr.pinterest.com/" target="_blank"><i class="ti-pinterest"></i></a></li>
+
+                    @if (User.Identity?.IsAuthenticated == false)
+                    {
                         <li class="list-inline-item">
                             <a asp-controller="Auth" asp-action="Login" class="btn btn-grey me-2 rounded">Login</a>
                         </li>
                         <li class="list-inline-item">
                             <a asp-controller="Auth" asp-action="Register" class="btn btn-primary me-2 rounded">Register</a>
                         </li>
-                    </ul>
-                </div>
+                    }
+                    else if ((User.Identity?.IsAuthenticated == true))
+                    {
+                        <li class="list-inline-item ms-auto">
+                            <a asp-controller="Auth" asp-action="Logout" class="btn btn-grey me-2 rounded">Logout</a>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

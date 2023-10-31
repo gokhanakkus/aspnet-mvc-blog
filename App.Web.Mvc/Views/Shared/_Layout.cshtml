@@ -50,6 +50,57 @@
     <!-- main js -->
     <script src="~/js/custom.js"></script>
 
+    @if (ViewBag.Message != null)
+    {
+        <div id="customMessage" class="slide-in-popup">
+            <span class="close-popup" onclick="closePopup()">×</span>
+            @ViewBag.Message
+        </div>
+        <style>
+            #customMessage {
+                border-radius: 15px;
+                box-shadow: 0 0 10px 5px #d1d0d0;
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                var messageBox = $('#customMessage');
+                var animationDuration = 1000;
+                var autoCloseDelay = 5000;
+
+                messageBox.css({
+                    position: 'fixed',
+                    top: '10px', // Sayfanın üstünden başlıyor
+                    right: '-400px', // Ekranın dışında başlıyor
+                    backgroundColor: '#f8efea',
+                    color: '#333',
+                    fontSize: '16px',
+                    padding: '20px',
+                    zIndex: 9999,
+                    display: 'flex',
+                    alignContent: 'center',
+                    alignItems: 'center',
+                });
+
+                messageBox.animate({ right: '10px' }, animationDuration);
+
+                setTimeout(function () {
+                    closePopup();
+                }, autoCloseDelay);
+            });
+
+            function closePopup() {
+                var messageBox = $('#customMessage');
+                var animationDuration = 500;
+
+                messageBox.animate({ right: '-400px' }, animationDuration, function () {
+                    messageBox.remove();
+                });
+            }
+
+        </script>
+    }
+
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

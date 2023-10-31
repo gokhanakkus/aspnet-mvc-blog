@@ -1388,11 +1388,14 @@ select.form-control:not([size]):not([multiple]) {
 footer
 -------------------------------*/
 .footer-section {
-  background: #f8f8f8;
-  background: #000;
-  padding: 60px 0px 0px;
-  margin-top: 150px;
-  position: relative;
+    background: #f8f8f8;
+    background: #000;
+    padding: 60px 0px 0px;
+    margin-top: 150px;   
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-section .copyright {

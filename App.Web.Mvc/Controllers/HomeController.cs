@@ -1,4 +1,5 @@
-﻿using App.Web.Mvc.Models;
+﻿using App.Web.Data.Concrete;
+using App.Web.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +7,24 @@ namespace App.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AppDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-		public IActionResult Index()
+        public IActionResult Index()
         {
-            return View();
+            var gonderi = _context.Posts.OrderByDescending(x => x.CreatedAt).First();
+            var catid = _context.CategoryPosts.Where(x => x.PostId == gonderi.Id).First().CategoryId;
+            var model = new HomeViewModel()
+            {
+                Post = gonderi,
+                Category = _context.Categories.Find(catid),
+                PostImage = _context.PostImages.Where(x => x.PostId == gonderi.Id).FirstOrDefault()
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()

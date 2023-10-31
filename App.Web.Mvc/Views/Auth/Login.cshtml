@@ -1,4 +1,4 @@
-﻿@model Auth
+﻿@model LoginViewModel
 
 @{
     ViewData["Title"] = "Üye Girişi";
@@ -31,7 +31,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                             <a class="small" asp-action="ForgotPassword">Parolamı Unuttum?</a>
-                            <button type="submit" class="btn btn-primary" href="index.html">Giriş</button>
+                            <button type="submit" class="btn btn-primary">Giriş</button>
                             <a asp-action="Register" class="btn btn-secondary">Üye Ol</a>
                         </div>
                     </form>
@@ -46,3 +46,4 @@
 <br />
 <br />
 <br />
+<partial name="_ValidationScriptsPartial" />
