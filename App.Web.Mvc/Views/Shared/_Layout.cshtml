@@ -49,6 +49,22 @@
     <script src="~/lib/bootstrap/dist/js/gmap.js"></script>
     <!-- main js -->
     <script src="~/js/custom.js"></script>
+    <script>
+        function toggleDropdown() {
+            var userOptions = document.getElementById("user-options");
+            userOptions.classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('#profile-picture')) {
+                var userOptions = document.getElementById("user-options");
+                if (userOptions.classList.contains('show')) {
+                    userOptions.classList.remove('show');
+                }
+            }
+        }
+    </script>
 
     @if (ViewBag.Message != null)
     {

@@ -20,6 +20,7 @@ namespace App.Web.Data.Concrete
         public DbSet<Page> Pages { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Slider> SliderItems { get; set; }
+        public DbSet<ContactMessage> ContactMessages { get; set; }
 
         public AppDbContext()
         {

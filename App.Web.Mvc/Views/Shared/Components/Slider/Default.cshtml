@@ -15,7 +15,7 @@
                             <div class="slider-post-content">
                                 <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">@item.Title</span>
                                 <h3 class="post-title mt-1"><a asp-controller="Blog" asp-action="Detail">@item.Name</a></h3>
-                                <span class=" text-muted  text-capitalize">@item.Date</span>
+                                <span class=" text-muted  text-capitalize">@item.Date.ToString("dd.MM.yyyy")</span>
                             </div>
                         </div>
                     </div>

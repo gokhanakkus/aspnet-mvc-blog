@@ -24,7 +24,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddAuthorization(x =>
 {
     x.AddPolicy("AdminPolicy", p => p.RequireClaim("Role", "Admin"));
-    x.AddPolicy("AuthorPolicy", p => p.RequireClaim("Role", "Author"));
+    x.AddPolicy("ModeratorPolicy", p => p.RequireClaim("Role", new string[] { "Moderator", "Admin" }));
     x.AddPolicy("UserPolicy", p => p.RequireClaim("Role", "User"));
 });
 
@@ -48,6 +48,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "BlogRoute",
+    pattern: "Blog/{title}-{id}/{action=Detail}/",
+    new { controller = "Blog", action = "Detail", title = "" },
+    new { id = @"^\d+$" }
+    );
+app.MapControllerRoute(
+    name: "CategoryRoute",
+    pattern: "Category/{title}-{id}/{action=Index}/",
+    new { controller = "Category", action = "Index", title = "" },
+    new { id = @"^\d+$" }
+    );
+
+app.MapControllerRoute(
             name: "admin",
             pattern: "{area:exists}/{controller=Main}/{action=Index}/{id?}"
           );
@@ -59,7 +72,7 @@ app.MapControllerRoute(
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await context.Database.EnsureDeletedAsync();
+    //await context.Database.EnsureDeletedAsync();
 
     if (await context.Database.EnsureCreatedAsync())
     {

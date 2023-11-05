@@ -1,0 +1,38 @@
+﻿@model App.Web.Entity.Concrete.PostImage
+@{
+    ViewData["Title"] = "Resmi Sil";
+}
+
+<div class="container">
+    <h2 class="mt-4">Resmi Sil</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Bunu silmek istediğinize emin misiniz?</h3>
+
+            <div>
+                <h4>Resim</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">Haber ID:</dt>
+                    <dd class="col-sm-10">@Html.DisplayFor(model => model.PostId)</dd>
+                    <dt class="col-sm-2">Haber Başlığı:</dt>
+                    <dd class="col-sm-10">@Html.DisplayFor(model => model.Post.Title)</dd>
+                    <dt class="col-sm-2">Resim:</dt>
+                    <dd class="col-sm-10">
+                        <img src="@Html.DisplayFor(model => model.ImagePath)" alt="Resim" class="img-thumbnail" />
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                        <a asp-action="Index" class="btn btn-secondary ml-2">Görsel Listesine Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model PostCRUDViewModel
+@{
+    ViewData["Title"] = "Post Sil";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h3 class="mt-4 mb-4">Bunu silmek istediğinize emin misiniz?</h3>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Haber</h4>
+                    <hr />
+
+                    <dl class="row">
+                        <dt class="col-sm-3">Başlık:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+                        <dt class="col-sm-3">İçerik:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Content)</dd>
+
+                        <dt class="col-sm-3">Slider:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.IsSlider)</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        <div class="d-flex justify-content-between mt-4">
+                            <input type="submit" value="Sil" class="btn btn-danger" />
+                            <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

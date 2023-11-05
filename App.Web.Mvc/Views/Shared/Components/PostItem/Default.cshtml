@@ -10,12 +10,39 @@
                     {
                         <div class="col-lg-3 col-md-6">
                             <article class="post-grid mb-5">
+                                @*@if (item.ImageUrl is not null)
+                                {
+                                    <div class="col-md-5">
+                                        <a class="post-thumb" asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id">
+                                            <img src="@item.ImageUrl" alt="" class="img-fluid w-100">
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-5">
+                                        <a class="post-thumb" asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id">
+                                            <img src="~/Img/news/f1.jpg" alt="" class="img-fluid w-100">
+                                        </a>
+                                    </div>
+                                }*@
                                 <a asp-controller="Blog" asp-action="Detail" class="post-thumb mb-4 d-block">
                                     <img src="@item.ImageUrl" alt="" class="img-fluid w-100">
                                 </a>
-                                <span class="cat-name text-color font-extra text-sm text-uppercase letter-spacing-1">@item.Title</span>
-                                <h3 class="post-title mt-1"><a asp-controller="Blog" asp-action="Detail">@item.Name</a></h3>
-                                <span class="text-muted letter-spacing text-uppercase font-sm">@item.Date</span>
+                                <span class="cat-name text-color font-extra text-sm text-uppercase letter-spacing-1">@Html.Raw(item.Title)</span>
+                                <h3 class="post-title mt-1">
+                                    <a asp-controller="Blog" asp-action="Detail">
+                                        @if (item.Name.Length > 60)
+                                        {
+                                            @Html.Raw(item.Name.Substring(0, 60))
+                                        }
+                                        else
+                                        {
+                                            @Html.Raw(item.Name)
+                                        }
+                                    </a>
+                                </h3>
+                                <span class="text-muted letter-spacing text-uppercase font-sm">@item.Date.ToString("dd.MM.yyyy")</span>
                             </article>
                         </div>
                     }

@@ -32,6 +32,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\multiselect-master\LICENSE" />
+    <None Include="wwwroot\multiselect-master\multiselect.min.js" />
+    <None Include="wwwroot\multiselect-master\README.md" />
+    <None Include="wwwroot\multiselect-master\scripts\helper.js" />
+    <None Include="wwwroot\multiselect-master\scripts\multiselect.core.js" />
+    <None Include="wwwroot\multiselect-master\scripts\multiselect.js" />
     <None Include="wwwroot\sneat\assets\js\config.js" />
     <None Include="wwwroot\sneat\assets\js\dashboards-analytics.js" />
     <None Include="wwwroot\sneat\assets\js\extended-ui-perfect-scrollbar.js" />

@@ -1,0 +1,47 @@
+﻿@model List<App.Web.Entity.Concrete.ContactMessage>
+
+<div class="container mt-3">
+    <h3 class="my-4">İletişim Mesajları</h3>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>#</th>
+                    <th>Ad</th>
+                    <th>E-posta</th>
+                    <th>Mesaj</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var message in Model)
+                {
+                    <tr>
+                        <td>@message.Id</td>
+                        <td>@message.Name</td>
+                        <td>@message.Email</td>
+                        <td>@message.Message</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteMessage(@message.Id)">Sil</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<form method="post" asp-controller="AdminContact" asp-action="Delete" id="deleteForm">
+    <input type="hidden" name="id" id="messageId" value="" /> 
+    <button type="submit" class="btn btn-danger" style="display: none;">Sil</button>
+</form>
+
+<script>
+    function deleteMessage(id) {
+        
+        document.getElementById("messageId").value = id;
+        
+        document.getElementById("deleteForm").submit();
+    }
+</script>
