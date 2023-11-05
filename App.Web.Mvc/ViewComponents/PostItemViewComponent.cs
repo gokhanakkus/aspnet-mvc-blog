@@ -27,7 +27,7 @@ namespace App.Web.Mvc.ViewComponents
                 Title = x.Title,
                 Name = x.Content,
                 Date = x.CreatedAt,
-                //PostId = post.Id,
+                PostId = x.Id,
                 ImageUrl = x.Images.FirstOrDefault()?.ImagePath
             }).ToList();
 

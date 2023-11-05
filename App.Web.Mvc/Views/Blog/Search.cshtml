@@ -16,7 +16,7 @@
                         <article class="post-grid mb-5">
                             <div class="col-md-6">
                                 <a class="post-thumb mb-4 d-block" asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id">
-                                    <img src="@(!string.IsNullOrEmpty(item.PostImage?.ImagePath) ? item.PostImage.ImagePath : "~/Img/news/f1.jpg")" alt="Görsel Yok" class="img-fluid">
+                                    <img src="@(!string.IsNullOrEmpty(item.PostImage?.ImagePath) ? item.PostImage.ImagePath : "../Img/news/f1.jpg")" alt="Görsel Yok" class="img-fluid">
                                 </a>
                             </div>
                             <div class="col-md-6">

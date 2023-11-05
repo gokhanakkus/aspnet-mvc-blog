@@ -99,12 +99,12 @@ namespace App.Web.Data.Concrete
             {
                 var postImages = new[]
                 {
-                    new PostImage { PostId = 1, ImagePath = "Img/news/f1.jpg" },
-                    new PostImage { PostId = 2, ImagePath = "Img/news/f2.jpg" },
-                    new PostImage { PostId = 3, ImagePath = "Img/news/f3.jpg" },
-                    new PostImage { PostId = 4, ImagePath = "Img/news/f4.jpg" },
-                    new PostImage { PostId = 5, ImagePath = "Img/news/f5.jpg" },
-                    new PostImage { PostId = 6, ImagePath = "Img/news/f6.jpg" },
+                    new PostImage { PostId = 1, ImagePath = "https://localhost:7239//Img/news/f1.jpg" },
+                    new PostImage { PostId = 2, ImagePath = "https://localhost:7239//Img/news/f2.jpg" },
+                    new PostImage { PostId = 3, ImagePath = "https://localhost:7239//Img/news/f3.jpg" },
+                    new PostImage { PostId = 4, ImagePath = "https://localhost:7239//Img/news/f4.jpg" },
+                    new PostImage { PostId = 5, ImagePath = "https://localhost:7239//Img/news/f5.jpg" },
+                    new PostImage { PostId = 6, ImagePath = "https://localhost:7239//Img/news/f6.jpg" },
 
                 };
 
@@ -209,12 +209,12 @@ namespace App.Web.Data.Concrete
             {
                 var posts = new List<Post>
                 {
-                    new Post { UserId = 1, Title = "Travel", Content = "How to Make a List for Traveling Alone" },
-                    new Post { UserId = 2, Title = "Weekends", Content = "A Simple Way to Feel Like Home When You Travel" },
-                    new Post { UserId = 3, Title = "LifeStyle", Content = "What Type of Traveler Are You?" },
-                    new Post { UserId = 1, Title = "Health", Content = "How to Plan Your Trip the Right Way" },
-                    new Post { UserId = 2, Title = "Explore", Content = "8 Powerful Ways to Add Vibrant Color to Your Life" },
-                    new Post { UserId = 3, Title ="Experience" ,Content="A Road Trip Review of the 2023" },  
+                    new Post { UserId = 1, Title = "Travel", Content = "How to Make a List for Traveling Alone", IsSlider = true },
+                    new Post { UserId = 2, Title = "Weekends", Content = "A Simple Way to Feel Like Home When You Travel", IsSlider = true },
+                    new Post { UserId = 3, Title = "LifeStyle", Content = "What Type of Traveler Are You?", IsSlider = true },
+                    new Post { UserId = 1, Title = "Health", Content = "How to Plan Your Trip the Right Way", IsSlider = false },
+                    new Post { UserId = 2, Title = "Explore", Content = "8 Powerful Ways to Add Vibrant Color to Your Life", IsSlider = false },
+                    new Post { UserId = 3, Title ="Experience" ,Content="A Road Trip Review of the 2023", IsSlider = false },  
                 };
 
                 context.Posts.AddRange(posts);

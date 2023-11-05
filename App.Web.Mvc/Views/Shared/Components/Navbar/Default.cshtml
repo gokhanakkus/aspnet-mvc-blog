@@ -1,4 +1,4 @@
-﻿
+﻿@model NavBarViewModel
 <header class="header-top bg-grey justify-content-center">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -40,23 +40,24 @@
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">
                                     Home
                                 </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Blog" asp-action="Detail">
-                                    Detail
-                                </a>
-                            </li>           
+                            </li>     
                             <li class="nav-item"><a asp-controller="Page" asp-action="Detail" class="nav-link">About</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Category
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                    <a asp-action="Lifestyle" asp-controller="Category">Lifestyle</a>
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                
+                                        <a class="nav-link" asp-controller="Category" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+                                
+                                    }
+                                    @*<a asp-action="Lifestyle" asp-controller="Category">Lifestyle</a>
                                     <a asp-action="Travel" asp-controller="Category">Travel</a>
                                     <a asp-action="Explore" asp-controller="Category">Explore</a>
                                     <a asp-action="Weekends" asp-controller="Category">Weekends</a>
-                                    <a asp-action="Health" asp-controller="Category">Health</a>
+                                    <a asp-action="Health" asp-controller="Category">Health</a>*@
                                 </div>
                                 </li>
                             <li class="nav-item">

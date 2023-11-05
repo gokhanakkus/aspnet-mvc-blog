@@ -26,12 +26,12 @@
                                         </a>
                                     </div>
                                 }*@
-                                <a asp-controller="Blog" asp-action="Detail" class="post-thumb mb-4 d-block">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.PostId" class="post-thumb mb-4 d-block">
                                     <img src="@item.ImageUrl" alt="" class="img-fluid w-100">
                                 </a>
                                 <span class="cat-name text-color font-extra text-sm text-uppercase letter-spacing-1">@Html.Raw(item.Title)</span>
                                 <h3 class="post-title mt-1">
-                                    <a asp-controller="Blog" asp-action="Detail">
+                                    <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.PostId">
                                         @if (item.Name.Length > 60)
                                         {
                                             @Html.Raw(item.Name.Substring(0, 60))

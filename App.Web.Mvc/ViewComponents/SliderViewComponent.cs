@@ -17,13 +17,15 @@ namespace App.Web.Mvc.ViewComponents
         {
             //var database = new DataBase();
             //var sliderItem = database.SliderItems;
-            var sliderItem = await _context.SliderItems
+            var sliderItem = await _context.Posts
+                .Where(x => x.IsSlider)
                 .Select(x => new SliderViewModel
                 {
                     Title = x.Title,
-                    ImageUrl = x.ImageUrl,
-                    Date = x.Date,
-                    Name = x.Name
+                    ImageUrl = x.Images.Any() ? x.Images.FirstOrDefault().ImagePath : null,
+                    Date = x.CreatedAt,
+                    PostId = x.Id,
+                    Content = x.Content
                 })
                 .ToListAsync(); 
             return View(sliderItem);

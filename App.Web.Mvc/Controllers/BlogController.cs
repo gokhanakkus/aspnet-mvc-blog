@@ -67,7 +67,7 @@ namespace App.Web.Mvc.Controllers
         [HttpGet]
         public IActionResult Detail([FromRoute] int id, [FromRoute] string title)
         {
-            Post post = _context.Posts.Where(c => c.Id == id).FirstOrDefault();
+            Post? post = _context.Posts.Where(c => c.Id == id).FirstOrDefault();
             if (post == null)
             {
                 return NotFound();

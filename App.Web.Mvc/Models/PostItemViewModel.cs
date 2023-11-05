@@ -10,8 +10,6 @@ namespace App.Web.Mvc.Models
         public string? ImageUrl { get; set; }
         public DateTime Date { get; set; }
 
-        [ForeignKey(nameof(PostId))]
-        public Post Post { get; set; }
         public int PostId { get; set; }
     }
 }
