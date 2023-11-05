@@ -97,8 +97,31 @@
                     else if ((User.Identity?.IsAuthenticated == true))
                     {
                         <li class="list-inline-item ms-auto">
-                            <a asp-controller="Auth" asp-action="Logout" class="btn btn-grey me-2 rounded">Logout</a>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="javascript:void(0);" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
+                                    <img src="..\sneat\assets\img\avatars\1.png" alt="User Profile" class="user-profile-image-small rounded-circle" id="profile-picture" style="width: 40px; height: 40px;">
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" id="user-options">
+                                    <li class="dropdown-item"><strong>@User.Identity.Name</strong></li>
+                                    <li class="dropdown-item">
+                                        <a asp-controller="Profile" asp-action="Index">
+                                            <img src="..\Img\user.png" alt="" style="width: 17px; height: 17px;  margin-right: 10px;"> Profilim
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a asp-controller="Admin" asp-action="Index">
+                                            <img src="..\Img\settings.png" alt="" style="width: 17px; height: 17px;  margin-right: 10px;"> Yönetim Paneli
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a asp-controller="Auth" asp-action="Logout">
+                                            <img src="..\Img\logout.png" alt="" style="width: 15px; height: 15px;  margin-right: 10px;"> Çıkış
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+
                     }
                 </ul>
             </div>

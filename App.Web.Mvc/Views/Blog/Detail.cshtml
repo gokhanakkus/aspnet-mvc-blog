@@ -1,10 +1,9 @@
 ﻿@model BlogDetailViewModel
-
 @{
-    ViewData["Title"] =Model.Post.Title + " Blog Detay";
+    ViewData["Title"] = Model.Post.Title + " Blog Detay";
 }
 
-<div class="container">
+<div class="container my-4">
     <div class="row">
         <div class="col-lg-8">
             <div class="single-post">
@@ -12,66 +11,66 @@
                     <div class="meta-cat">
                         <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">@Model.PostCategory.Name</a>
                     </div>
-                    <h2 class="post-title mt-2">
-                        @Model.Post.Title
-                    </h2>
+                    <h2 class="post-title mt-2">@Model.Post.Title</h2>
                     <div class="post-meta">
-                        @*<span class="text-uppercase font-sm letter-spacing-1 mr-3">by @Model.PostAuthor.Name</span>*@
                         <span class="text-uppercase font-sm letter-spacing-1">@Model.Post.CreatedAt.ToString("MMMM dd, yyyy")</span>
                     </div>
-                    <div class="post-featured-image mt-5">
+                    <div class="post-featured-image mt-4">
                         <img src="@Model.PostImage.ImagePath" class="img-fluid w-100" alt="featured-image">
                     </div>
                 </div>
-                <div class="post-body">
+                <div class="post-body mt-4">
                     <div class="entry-content">
                         @Html.Raw(Model.Post.Content)
                     </div>
                 </div>
             </div>
-            <div class="comment-area my-5">
+            <div class="comment-area mt-5">
                 <h3 class="mb-4 text-center">@Model.PostComments.Count Comments</h3>
-                @foreach (var comment in Model.PostComments)
-                {
-                    <div class="comment-area-box media">
-                        <img alt="" src="~\Img\blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
-                        <div class="media-body ml-4">
-                            <h4 class="mb-0">@comment.User.Name</h4>
-                            <span class="date-comm font-sm text-capitalize text-color">
-                                <i class="ti-time mr-2"></i>@comment.Comment.CreatedAt.ToString("MMMM dd, yyyy")
-                            </span>
-                            <div class="comment-content mt-3">
-                                <p>@comment.Comment.Comment</p>
+                <div class="comment-list">
+                    @foreach (var comment in Model.PostComments)
+                    {
+                        <div class="media comment-box mb-4">
+                            <img alt="" src="~/Img/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
+                            <div class="media-body">
+                                <h4 class="mb-0">@comment.User.Name</h4>
+                                <span class="date-comm font-sm text-capitalize text-color">
+                                    <i class="ti-time mr-2"></i>@comment.Comment.CreatedAt.ToString("MMMM dd, yyyy")
+                                </span>
+                                <div class="comment-content mt-3">
+                                    <p>@comment.Comment.Comment</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                </div>
+                @if (Context.Session.GetString("UserId") == null)
+                {
+                    <h3 class="mb-4 text-center">Leave a Comment</h3>
+                    <form asp-action="Detail" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="contact-name" name="Name" placeholder="Enter Your Full Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="contact-email" name="Email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" name="Message" cols="30" rows="10" placeholder="Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn leave-comment-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
+                    </form>
+                }
+                else
+                {
+                    <h3 class="mb-4 text-center">Leave a Comment</h3>
+                    <form asp-action="Detail" method="post">
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" name="Message" cols="30" rows="10" placeholder="Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn leave-comment-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
+                    </form>
                 }
             </div>
-            @if (Context.Session.GetInt32("UserId") == null)
-            {
-                <form asp-action="Detail" method="post">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="contact-name" name="Name" placeholder="Enter Your Full Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="contact-email" name="Email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" name="Message" placeholder="Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn leave-comment-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
-                </form>
-            }
-            else
-            {
-                <form asp-action="Detail" method="post">
-
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" name="Message" placeholder="Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn leave-comment-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
-                </form>
-            }
         </div>
         <div class="col-lg-4">
             <div class="sidebar">

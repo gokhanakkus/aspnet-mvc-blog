@@ -1,0 +1,37 @@
+﻿@model App.Web.Entity.Concrete.User
+@{
+    ViewData["Title"] = "Kullanıcı Sil";
+}
+
+<div class="container mt-5">
+    <h3>Kullanıcı Sil</h3>
+    <hr />
+
+    <h3>Bunu silmek istediğinize emin misiniz?</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kullanıcı Detayları</h4>
+            <dl class="row">
+                <dt class="col-sm-3">Adı:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+                <dt class="col-sm-3">E-posta:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+                <dt class="col-sm-3">Şehir:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.City)</dd>
+                <dt class="col-sm-3">Oluşturulma Tarihi:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.CreatedAt)</dd>
+                <dt class="col-sm-3">Rol:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.RoleId)</dd>
+            </dl>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -14,9 +14,9 @@ namespace App.Web.Entity.Abstract
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [Column(name: "Güncelleme Tarihi", TypeName = "datetime")]
-        public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; } 
 
         [Column(name: "Silinme Tarihi", TypeName = "datetime")]
-        public DateTime? DeletedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? DeletedAt { get; set; } 
     }
 }

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Üye Girişi";
 }
 
-<div class="container">
+<div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -14,13 +14,13 @@
                     <form asp-action="Login" method="Post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="redirectUrl" />
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-5">
                             <label asp-for="Email">Email</label>
                             <input asp-for="Email" name="Email" class="form-control" type="email" placeholder="name@example.com" />
 
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-5">
                             <input asp-for="Password" name="Password" class="form-control" type="password" placeholder="Password" />
                             <label asp-for="Password">Parola</label>
                             <span asp-validation-for="Password" class="text-danger"></span>
@@ -29,7 +29,7 @@
                             <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                             <label class="form-check-label" for="inputRememberPassword">Beni Hatırla</label>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                        <div class="d-flex align-items-center justify-content-between mt-4 mb-5">
                             <a class="small" asp-action="ForgotPassword">Parolamı Unuttum?</a>
                             <button type="submit" class="btn btn-primary">Giriş</button>
                             <a asp-action="Register" class="btn btn-secondary">Üye Ol</a>
@@ -40,10 +40,4 @@
         </div>
     </div>
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 <partial name="_ValidationScriptsPartial" />

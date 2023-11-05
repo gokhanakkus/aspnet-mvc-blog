@@ -1,0 +1,29 @@
+﻿@model IEnumerable<App.Web.Entity.Concrete.PostImage>
+
+@{
+    ViewData["Title"] = "Resimler";
+}
+
+<div class="container">
+    <h2 class="my-4">Resimler</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Yeni Resim Ekle</a>
+    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary mb-3">Post Listesine Dön</a>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@Html.DisplayFor(modelItem => item.ImagePath)" class="card-img-top" alt="Resim">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Post.Title)</h5>
+                        <div class="btn-group" role="group" aria-label="İşlemler">
+                            <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

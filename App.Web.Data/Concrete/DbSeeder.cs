@@ -48,7 +48,7 @@ namespace App.Web.Data.Concrete
                 var roles = new List<Role>
                 {
                     new Role { Name = "Admin" },
-                    new Role { Name = "Author" },
+                    new Role { Name = "Moderator" },
                     new Role { Name = "User" }
                 };
 
@@ -72,19 +72,20 @@ namespace App.Web.Data.Concrete
                     },
                     new User
                     {
+                        Name = "moderator",
+                        Email = "moderator@blog.com",
+                        Password = "1234",
+                        CreatedAt = DateTime.UtcNow,
+                        RoleId = context.Roles.Single(r => r.Name == "Moderator").Id
+                    },
+                    new User
+                    {
                         Name = "user",
                         Email = "user@blog.com",
                         Password = "1234",
                         CreatedAt = DateTime.UtcNow,
                         RoleId = context.Roles.Single(r => r.Name == "User").Id
-                    },
-                    new User
-                    {
-                        Name = "author",
-                        Email = "author@blog.com",
-                        Password = "1234",
-                        CreatedAt = DateTime.UtcNow,
-                        RoleId = context.Roles.Single(r => r.Name == "Author").Id
+                        
                     }
                 };
 

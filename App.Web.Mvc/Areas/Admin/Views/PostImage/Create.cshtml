@@ -1,0 +1,35 @@
+﻿@model App.Web.Entity.Concrete.PostImage
+@{
+    ViewData["Title"] = "Yeni Resim Ekle";
+}
+
+<div class="container">
+    <h2 class="mt-4">Yeni Resim Ekle</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="PostId" class="form-label">Gönderi Seçin:</label>
+                    <select asp-for="PostId" class="form-select" asp-items="ViewBag.PostId">
+                    </select>
+                    <span asp-validation-for="PostId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ImagePath" class="form-label">Resim Seçin:</label>
+                    <input asp-for="ImagePath" type="file" class="form-control" />
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Yeni Ekle</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@ namespace App.Web.Entity.Concrete
 
         [MinLength(200), MaxLength(2000), Column(name: "İçerik", TypeName = "nvarchar")]
         public string Content { get; set; }
+        public bool IsSlider { get; set; }
 
         public virtual ICollection<PostComment> Comments { get; set; }
         public virtual ICollection<CategoryPost> CategoryPosts { get; set; }

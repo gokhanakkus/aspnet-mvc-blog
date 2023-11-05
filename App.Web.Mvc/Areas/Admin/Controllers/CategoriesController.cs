@@ -9,7 +9,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
 	[Authorize(Policy = "AdminPolicy")]
-	public class CategoriesController : BaseAdminController
+	public class CategoriesController : Controller
     {
 		private readonly AppDbContext _context;
 
@@ -45,12 +45,12 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 		{
 			try
 			{
-				if (!ModelState.IsValid)
-				{
-					ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
-				}
-				else
-				{
+				//if (!ModelState.IsValid)
+				//{
+				//	ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
+				//}
+				//else
+				//{
 					Category category = new();
 					category.Name = collection.Name;
 					category.Description = collection.Description;
@@ -59,7 +59,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 					_context.SaveChanges();
 
 					return RedirectToAction(nameof(Index));
-				}
+				//}
 
 			}
 			catch
@@ -71,7 +71,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 		}
 
 		// GET: CategoryController/Edit/5
-		public ActionResult Edit(int? id)
+		public ActionResult Update(int? id)
 		{
 			if (id is null)
 			{
@@ -89,16 +89,16 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 		// POST: CategoryController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, Category collection)
+		public ActionResult Update(int id, Category collection)
 		{
 			try
 			{
-				if (!ModelState.IsValid)
-				{
-					ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
-				}
-				else
-				{
+				//if (!ModelState.IsValid)
+				//{
+				//	ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
+				//}
+				//else
+				//{
 					Category category = _context.Categories.Find(collection.Id);
 					category.Name = collection.Name;
 					category.Description = collection.Description;
@@ -107,7 +107,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 					_context.SaveChanges();
 
 					return RedirectToAction(nameof(Index));
-				}
+				//}
 			}
 			catch
 			{

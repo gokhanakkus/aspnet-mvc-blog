@@ -1,17 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AuthController : BaseAdminController
+    [Authorize(Policy = "ModeratorPolicy")]
+	public class AuthController : BaseAdminController
     {
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Login()
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }

@@ -112,7 +112,7 @@ namespace App.Web.Mvc.Controllers
                         if (kullanici.RoleId == 1)
                             kullaniciyetkileri.Add(new Claim("Role", "Admin"));
                         else if (kullanici.RoleId == 2)
-                            kullaniciyetkileri.Add(new Claim("Role", "Author"));
+                            kullaniciyetkileri.Add(new Claim("Role", "Moderator"));
                         else if (kullanici.RoleId == 3)
                             kullaniciyetkileri.Add(new Claim("Role", "User"));
                         var kullanicikimligi = new ClaimsIdentity(kullaniciyetkileri, "Login");
@@ -192,17 +192,16 @@ namespace App.Web.Mvc.Controllers
         }
         public async Task<IActionResult> Logout()
         {
-            //try
-            //{
-            //    HttpContext.Session.Remove("UserId");
-            //}
-            //catch (Exception)
-            //{
-            //    HttpContext.Session.Clear();
+            try
+            {
+                HttpContext.Session.Remove("UserId");
+				await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
+            catch (Exception)
+            {
+                HttpContext.Session.Clear();
 
-            //}
-            //return Redirect("/Home/Index");
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            } 
             return RedirectToAction("Index", "Home");
         }
     }

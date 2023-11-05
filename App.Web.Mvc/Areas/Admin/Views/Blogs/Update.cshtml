@@ -1,4 +1,65 @@
-﻿@{
-    ViewData["Title"] = "Admin Anasayfa";
+﻿@model PostCRUDViewModel
+@{
+    ViewData["Title"] = "Blog Düzenle";
 }
-<div class="mt-5 ms-5"><h4>Post Yönetimi/ Post Ekle</h4></div>
+
+<div class="container">
+    <h2 class="mt-4">Blog Düzenle</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Update" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label">Başlık:</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Content" class="form-label">İçerik:</label>
+                    <textarea id="editor" asp-for="Content" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="IsSlider" id="IsSlider">
+                    <label class="form-check-label" for="IsSlider">Slider</label>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CategoryIds" class="form-label">Kategoriler:</label>
+                    <select asp-for="CategoryIds" id="Category_dropdown" multiple class="form-select">
+                        @foreach (var item in Model.Categories)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Categories" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.multiselect('#Category_dropdown')
+        .setCheckBoxClick("checkboxAll", function (target, args) {
+            console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+        })
+        .setCheckBoxClick("1", function (target, args) {
+            console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+        });
+
+    CKEDITOR.replace('editor', {
+        language: 'tr', 
+        height: 300    
+    });
+</script>

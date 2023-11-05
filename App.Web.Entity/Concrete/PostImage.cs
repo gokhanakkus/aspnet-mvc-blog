@@ -20,11 +20,5 @@ namespace App.Web.Entity.Concrete
         [MaxLength(600), Column(name: "Resim", TypeName = "nvarchar")]
         public string? ImagePath { get; set; }
     }
-    //public class PostImage
-    //{
-    //    public int Id { get; set; }
-    //    public int PostId { get; set; }
-    //    public Post Post { get; set; }
-    //    public string ImagePath { get; set; }
-    //}
+    
 }

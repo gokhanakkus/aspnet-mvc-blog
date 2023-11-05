@@ -146,7 +146,7 @@ namespace App.Web.Mvc.Controllers
                     user.Email = Email;
                     user.CreatedAt = DateTime.UtcNow;
                     user.Password = "1234";
-                    user.RoleId = 2;
+                    user.RoleId = 3;
                     _context.Users.Add(user);
                     _context.SaveChanges();
                 }

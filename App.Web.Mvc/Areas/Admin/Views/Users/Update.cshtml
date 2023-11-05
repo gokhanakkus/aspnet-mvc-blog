@@ -1,4 +1,52 @@
-﻿@{
-    ViewData["Title"] = "Kullanıcı Yönetimi";
+﻿@model App.Web.Entity.Concrete.User
+@{
+    ViewData["Title"] = "Kullanıcı Düzenle";
 }
-<div class="mt-5 ms-5"><h4>Kullanıcı Yönetimi/Güncelle</h4></div>
+
+<div class="container mt-5">
+    <h3>Kullanıcı Düzenle</h3>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Update" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Adı:</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">E-posta:</label>
+                    <input asp-for="Email" class="form-control" type="email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label">Şehir:</label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Şifre:</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="RoleId" class="form-label">Rol:</label>
+                    <select asp-for="RoleId" class="form-select" asp-items="ViewBag.RoleId"></select>
+                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@model App.Web.Entity.Concrete.PostComment
+@{
+    ViewData["Title"] = "Yorum Sil";
+}
+<div class="container">
+    <h3 class="my-4">Bunu silmek istediğinize emin misiniz?</h3>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yorum Detayları</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">Yorum</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Comment)</dd>
+                <dt class="col-sm-2">Kullanıcı Adı</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.User.Name)</dd>
+                <dt class="col-sm-2">Gönderi Başlığı</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Post.Title)</dd>
+            </dl>
+        </div>
+    </div>
+    <form asp-action="Delete" method="post" class="mt-3">
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </form>
+</div>
