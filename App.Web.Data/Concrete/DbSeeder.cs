@@ -21,6 +21,7 @@ namespace App.Web.Data.Concrete
             SeedPages(context);
             SeedPostComments(context);
             SeedSliderItems(context);
+            SeedPageImages(context);
         }
         private static void SeedCategories(AppDbContext context)
         {
@@ -139,18 +140,35 @@ namespace App.Web.Data.Concrete
             {
                 var pages = new[]
                 {
-                    new Page { Title = "Sayfa 1", Content = "İçerik 1", IsActive = true },
-                    new Page { Title = "Sayfa 2", Content = "İçerik 2", IsActive = true },
-                    new Page { Title = "Sayfa 3", Content = "İçerik 3", IsActive = true },
-                    new Page { Title = "Sayfa 4", Content = "İçerik 4", IsActive = true },
-                    new Page { Title = "Sayfa 5", Content = "İçerik 5", IsActive = true },
-
+                    new Page { Title = "I have travel 10+ more countries in this year.", Content = "Poor Alice! It was as much as she could do, lying down on one side, to look through into the garden with one eye; but to get through was more hopeless than ever: she sat down and began to cry again.", WhoIsMe = "Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat", MyVision = "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis biben. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit." },
                 };
 
                 context.Pages.AddRange(pages);
                 context.SaveChanges();
             }
         }
+
+        private static void SeedPageImages(AppDbContext context)
+        {
+            if (!context.PageImages.Any())
+            {
+                var page = context.Pages.FirstOrDefault();
+
+                if (page != null)
+                {
+                    var pageImage = new PageImage
+                    {
+                        PageId = page.Id,
+                        FileName = "/Img/about.jpg"
+                    };
+
+                    context.PageImages.Add(pageImage);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+
 
         private static void SeedPostComments(AppDbContext context)
         {

@@ -1,0 +1,101 @@
+﻿@*@model App.Web.Entity.Concrete.Page
+
+<div class="container">
+    <h1 class="my-4">About Me (Admin Panel)</h1>
+
+    <a asp-area="Admin" asp-controller="AdminAboutMe" asp-action="CreateImage" class="btn btn-primary">Create Image</a>
+    <a asp-area="Admin" asp-controller="AdminAboutMe" asp-action="UpdateImage" class="btn btn-primary">Update Image</a>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@Model.Title</h2>
+            <p class="lead">@Model.Content</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="my-3">Who is Me?</h3>
+            <p>@Model.WhoIsMe</p>
+        </div>
+        <div class="col-md-6">
+            <h3 class="my-3">My Vision</h3>
+            <p>@Model.MyVision</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="my-4">Images</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model.PageImages != null)
+        {
+            @foreach (var image in Model.PageImages)
+            {
+                <div class="col-md-4">
+                    <img src="@image.FileName" alt="Image" class="img-fluid my-2" />
+                </div>
+            }
+        }
+    </div>
+</div>
+<a asp-area="Admin" asp-controller="AdminAboutMe" asp-action="Edit" class="btn btn-primary">Edit</a>
+
+*@
+@model App.Web.Entity.Concrete.Page
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="my-4">About Me (Admin Panel)</h1>
+
+            <div class="text-center mb-4">
+             @*   <a asp-area="Admin" asp-controller="AdminAboutMe" asp-action="CreateImage" class="btn btn-primary mr-2">Create Image</a>*@
+                <a asp-area="Admin" asp-controller="AdminAboutMe" asp-action="UpdateImage" class="btn btn-primary">Update Image</a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>@Model.Title</h2>
+                    <p class="lead">@Model.Content</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="my-3">Who is Me?</h3>
+                    <p>@Model.WhoIsMe</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="my-3">My Vision</h3>
+                    <p>@Model.MyVision</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h2 class="my-4">Images</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                @if (Model.PageImages != null)
+                {
+                    @foreach (var image in Model.PageImages)
+                    {
+                        <div class="col-md-4">
+                            <img src="@image.FileName" alt="Image" class="img-fluid my-2" />
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="text-center mt-4">
+                <a asp-area="Admin" asp-controller="AdminAboutMe" asp-action="Edit" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
