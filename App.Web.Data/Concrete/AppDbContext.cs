@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace App.Web.Data.Concrete
 {
@@ -18,6 +19,7 @@ namespace App.Web.Data.Concrete
         public DbSet<PostComment> PostComments { get; set; }
         public DbSet<PostImage> PostImages { get; set; }
         public DbSet<Page> Pages { get; set; }
+        public DbSet<PageImage> PageImages { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<Slider> SliderItems { get; set; }
         public DbSet<ContactMessage> ContactMessages { get; set; }

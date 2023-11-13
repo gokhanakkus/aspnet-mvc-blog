@@ -1,0 +1,25 @@
+﻿@*@model App.Web.Entity.Concrete.PageImage
+
+@{
+    ViewData["Title"] = "Resim Ekle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@using (Html.BeginForm("CreateImage", "AdminAboutMe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.PageId, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.PageId, ViewBag.PageId as SelectList, "Sayfa Seç", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PageId, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="ImageFile">Resim Yükle</label>
+        <input type="file" name="ImageFile" id="ImageFile" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Resim Ekle</button>
+}
+
+<a asp-action="Index" class="btn btn-default">Geri Dön</a>
+*@
