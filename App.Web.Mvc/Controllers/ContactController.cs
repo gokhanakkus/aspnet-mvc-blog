@@ -7,7 +7,6 @@ namespace App.Web.Mvc.Controllers
 {
     public class ContactController : Controller
     {
-		//[Route("Iletisim")]
         private readonly AppDbContext _context;
 
         public ContactController(AppDbContext context)
@@ -15,19 +14,15 @@ namespace App.Web.Mvc.Controllers
             _context = context;
         }
 
-        // İletişim formunu gösteren eylem
         public IActionResult Index()
         {
             var model = new ContactViewModel();
             return View(model);
         }
 
-        // İletişim formundan verileri alacak ve işleyecek eylem
         [HttpPost]
         public IActionResult Index(ContactViewModel model)
         {
-            //if (ModelState.IsValid)
-            //{
                 try
                 {
                     var contactMessage = new ContactMessage
@@ -44,10 +39,9 @@ namespace App.Web.Mvc.Controllers
                 }
                 catch (Exception ex)
                 {
-                    //return RedirectToAction("Error");
+                   
                 }
-            //}
-
+            
             return View(model);
         }
 

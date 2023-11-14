@@ -59,7 +59,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 
                         return RedirectToAction(nameof(Index));
                     }
-
             }
             catch
             {

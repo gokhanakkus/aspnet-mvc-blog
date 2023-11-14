@@ -12,7 +12,6 @@ namespace App.Web.Mvc.Models
 
         [Required, Column(name: "İçerik", TypeName = "text")]
         public string Content { get; set; }
-
         public string WhoIsMe { get; set; }
         public string MyVision { get; set; }
         public List<PageImage> PageImages { get; set; }

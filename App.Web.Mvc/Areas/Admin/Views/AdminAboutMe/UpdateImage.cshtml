@@ -1,31 +1,4 @@
-﻿@*@model App.Web.Entity.Concrete.PageImage
-
-@{
-    ViewData["Title"] = "Resim Düzenle";
-}
-
-<h2>@ViewData["Title"]</h2>
-
-@using (Html.BeginForm("UpdateImage", "AdminAboutMe", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Id)
-    <div class="form-group">
-        @Html.LabelFor(model => model.PageId, htmlAttributes: new { @class = "control-label" })
-        @Html.DropDownListFor(model => model.PageId, ViewBag.PageId as SelectList, "Sayfa Seç", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.PageId, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        <label for="ImageFile">Resim Yükle (Değiştirmek istemiyorsanız boş bırakabilirsiniz)</label>
-        <input type="file" name="ImageFile" id="ImageFile" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Resim Düzenle</button>
-}
-
-<a asp-action="Index" class="btn btn-default">Geri Dön</a>
-*@
-
-@model App.Web.Entity.Concrete.PageImage
+﻿@model App.Web.Entity.Concrete.PageImage
 
 @{
     ViewData["Title"] = "Resim Düzenle";

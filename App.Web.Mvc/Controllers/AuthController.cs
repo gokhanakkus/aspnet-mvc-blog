@@ -99,7 +99,6 @@ namespace App.Web.Mvc.Controllers
                         var kullaniciyetkileri = new List<Claim>
                         {
                             new Claim(ClaimTypes.Email,kullanici.Email),
-
                         };
                         if (kullanici.RoleId == 1)
                             kullaniciyetkileri.Add(new Claim("Role", "Admin"));
@@ -123,7 +122,6 @@ namespace App.Web.Mvc.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError("", "Hata Oluştu!");
-
             }
             return View();
         }
@@ -192,7 +190,6 @@ namespace App.Web.Mvc.Controllers
             catch (Exception)
             {
                 HttpContext.Session.Clear();
-
             } 
             return RedirectToAction("Index", "Home");
         }  

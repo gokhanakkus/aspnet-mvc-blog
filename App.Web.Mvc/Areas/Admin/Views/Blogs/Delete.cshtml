@@ -1,4 +1,5 @@
-﻿@model PostCRUDViewModel
+﻿@using System.Web;
+@model PostCRUDViewModel
 @{
     ViewData["Title"] = "Post Sil";
 }
@@ -19,7 +20,7 @@
 
                         <dt class="col-sm-3">İçerik:</dt>
                         <dd class="col-sm-9">@Html.DisplayFor(model => model.Content)</dd>
-
+                        
                         <dt class="col-sm-3">Slider:</dt>
                         <dd class="col-sm-9">@Html.DisplayFor(model => model.IsSlider)</dd>
                     </dl>

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Kayıt Ol";
 }
 
-@*<div class="container">
+<div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -18,56 +18,21 @@
                             <input asp-for="Name" class="form-control" type="text" placeholder="Ad" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
+
                         <div class="form-floating mb-3">
                             <label asp-for="Email">Email</label>
                             <input asp-for="Email" class="form-control" type="email" placeholder="name@example.com" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        <div class="form-floating mb-3">
-                            <label asp-for="Password">Parola</label>
-                            <input asp-for="Password" class="form-control" type="password" placeholder="Parola" />          
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                            <a class="small" asp-action="Login">Zaten üye misiniz?</a>
-                            <button type="submit" class="btn btn-primary" href="index.html">Kayıt Ol</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br />*@
-<div class="container mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-5">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="text-center font-weight-light my-4">Kayıt Ol</h3></div>
-                <div class="card-body">
-
-                    <form asp-action="Register" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-floating mb-3">
-                            <label asp-for="Name">Ad</label>
-                            <input asp-for="Name" class="form-control" type="text" placeholder="Ad" />    
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <label asp-for="Email">Email</label>
-                            <input asp-for="Email" class="form-control" type="email" placeholder="name@example.com" />  
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
 
                         <div class="form-floating mb-3">
                             <label asp-for="Password">Parola</label>
-                            <input asp-for="Password" class="form-control" type="password" placeholder="Parola" />      
+                            <input asp-for="Password" class="form-control" type="password" placeholder="Parola" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="form-floating mb-3">
                             <label asp-for="City">Şehir</label>
-                            <input asp-for="City" class="form-control" type="text" placeholder="Şehir" />    
+                            <input asp-for="City" class="form-control" type="text" placeholder="Şehir" />
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
@@ -76,7 +41,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

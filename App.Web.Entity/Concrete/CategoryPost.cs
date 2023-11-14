@@ -23,15 +23,5 @@ namespace App.Web.Entity.Concrete
         [ForeignKey(nameof(PostId))]
         public virtual Post? Post { get; set; }
     }
-    //public class CategoryPost
-    //{
-    //    [Key]
-    //    public int CategoryId { get; set; }
-
-    //    [Key]
-    //    public int PostId { get; set; }
-
-    //    public Category Category { get; set; }
-    //    public Post Post { get; set; }
-    //}
+    
 }
