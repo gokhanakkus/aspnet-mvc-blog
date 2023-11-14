@@ -18,39 +18,29 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 			_context = context;
 		}
 
-		// GET: CategoryController
 		public ActionResult Index()
 		{
 			var model = _context.Categories.ToList();
 			return View(model);
 		}
 
-		// GET: CategoryController/Details/5
 		public ActionResult Details(int id)
 		{
 			return View();
 		}
 
-		// GET: CategoryController/Create
 		public ActionResult Create()
 		{
 			ViewBag.ParentId = new SelectList(_context.Categories.ToList(), "Id", "Name");
 			return View();
 		}
 
-		// POST: CategoryController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(Category collection)
 		{
 			try
 			{
-				//if (!ModelState.IsValid)
-				//{
-				//	ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
-				//}
-				//else
-				//{
 					Category category = new();
 					category.Name = collection.Name;
 					category.Description = collection.Description;
@@ -59,18 +49,14 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 					_context.SaveChanges();
 
 					return RedirectToAction(nameof(Index));
-				//}
-
 			}
 			catch
 			{
-
 			}
 			ViewBag.ParentId = new SelectList(_context.Categories.ToList(), "Id", "Name");
 			return View(collection);
 		}
 
-		// GET: CategoryController/Edit/5
 		public ActionResult Update(int? id)
 		{
 			if (id is null)
@@ -86,19 +72,12 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 			return View(model);
 		}
 
-		// POST: CategoryController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Update(int id, Category collection)
 		{
 			try
 			{
-				//if (!ModelState.IsValid)
-				//{
-				//	ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
-				//}
-				//else
-				//{
 					Category category = _context.Categories.Find(collection.Id);
 					category.Name = collection.Name;
 					category.Description = collection.Description;
@@ -107,7 +86,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 					_context.SaveChanges();
 
 					return RedirectToAction(nameof(Index));
-				//}
 			}
 			catch
 			{
@@ -117,7 +95,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 			return View(collection);
 		}
 
-		// GET: CategoryController/Delete/5
 		public ActionResult Delete(int? id)
 		{
 			if (id is null)
@@ -133,7 +110,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 			return View(model);
 		}
 
-		// POST: CategoryController/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int id, Category collection)

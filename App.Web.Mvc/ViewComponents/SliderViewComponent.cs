@@ -29,6 +29,5 @@ namespace App.Web.Mvc.ViewComponents
 
             return View(sliderItem);
         }
-
     }
 }

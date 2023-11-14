@@ -17,31 +17,6 @@ namespace App.Web.Mvc.Controllers
             _context = context;
         }
 
-        //[HttpGet]
-        //public IActionResult Search([FromQuery] string q)
-        //{
-        //    List<int> Ids = (
-        //        from CategoryPosts in _context.CategoryPosts
-        //        where CategoryPosts.Category.Name.Contains(q) || CategoryPosts.Post.Content.Contains(q) || CategoryPosts.Post.Title.Contains(q)
-        //        select CategoryPosts.PostId
-        //        ).ToList();
-        //    List<SearchViewModel> Results = new List<SearchViewModel>();
-        //    List<Post> posts = new List<Post>();
-        //    foreach (int i in Ids)
-        //    {
-        //        if (posts.Where(c => c.Id == i).FirstOrDefault() is null)
-        //        {
-        //            posts.Add(_context.Posts.Where(c => c.Id == i).FirstOrDefault());
-        //            Results.Add(new SearchViewModel()
-        //            {
-        //                Post = _context.Posts.Where(c => c.Id == i).FirstOrDefault(),
-        //                Category = _context.Categories.Find(_context.CategoryPosts.Where(c => c.PostId == i).FirstOrDefault().CategoryId),
-        //                PostImage = _context.PostImages.Where(x => x.PostId == i).FirstOrDefault()
-        //            });
-        //        }
-        //    }
-        //    return View(Results);
-        //}
         [HttpGet]
         public IActionResult Search([FromQuery] string q)
         {
@@ -84,29 +59,6 @@ namespace App.Web.Mvc.Controllers
 
             return View(Results);
         }
-
-
-
-        //[Route("Blog")] //hatalı geçici olarak yazıldı.CategoryPosts yerine category olacak.
-        //public IActionResult Detail(int id)
-        //{
-        //    var post = _context.Posts.Include(p => p.CategoryPosts).Include(p => p.Images).FirstOrDefault(p => p.Id == id);
-        //    if (post == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        var detail = new DetailViewModel
-        //        {
-        //            Post = post,
-        //            Category = post.CategoryPosts,
-        //            PostImage = post.Images
-        //        };
-
-        //        return View(detail);
-        //    }
-        //}
 
         [HttpGet]
         public IActionResult Detail([FromRoute] int id, [FromRoute] string title)

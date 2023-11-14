@@ -23,11 +23,5 @@ namespace App.Web.Entity.Concrete
         public string MyVision { get; set; }
         public List<PageImage> PageImages { get; set; }
     }
-    //public class Page
-    //{
-    //    public int Id { get; set; }
-    //    public string Title { get; set; }
-    //    public string Content { get; set; }
-    //    public bool IsActive { get; set; }
-    //}
+   
 }

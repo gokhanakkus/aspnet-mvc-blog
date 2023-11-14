@@ -30,7 +30,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 			return View(model);
 		}
 
-		// GET: NewsImageController/Create
 		public ActionResult Create()
 		{
 			ViewBag.PostId = new SelectList(_context.Posts.ToList(), "Id", "Title");
@@ -101,7 +100,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 			ViewBag.PostId = new SelectList(_context.Posts.ToList(), "Id", "Title");
 			return View(collection);
 		}
-
 
 		public ActionResult Delete(int? id)
 		{

@@ -18,7 +18,6 @@ namespace App.Web.Mvc.Controllers
         [Route("AboutMe")]
 		public IActionResult Detail()
         {
- 
             var page = _context.Pages.Include(p => p.PageImages).FirstOrDefault();
             
                 var viewModel = new AboutMeViewModel
@@ -31,7 +30,6 @@ namespace App.Web.Mvc.Controllers
                 };
                 return View(viewModel);
             
-
         }
     }
 }

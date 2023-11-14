@@ -54,18 +54,13 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
                 {
                     return NotFound();
                 }
-                //if(ModelState.IsValid)
-                //{
-                //	ModelState.AddModelError("","Hata var kontrol ediniz!");
-                //}
-                //else
-                //{
+                
                 yorum.UpdatedAt = DateTime.UtcNow;
                 yorum.IsActive = collection.IsActive;
                 _context.PostComments.Update(yorum);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
-                //}
+                
 
             }
             catch
