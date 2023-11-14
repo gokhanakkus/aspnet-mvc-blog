@@ -9,21 +9,23 @@
     <a asp-action="Create" class="btn btn-primary mb-3">Yeni Resim Ekle</a>
     <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary mb-3">Post Listesine Dön</a>
 
-    <div class="row">
+    <ul class="list-group">
         @foreach (var item in Model)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="@Html.DisplayFor(modelItem => item.ImagePath)" class="card-img-top" alt="Resim">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Post.Title)</h5>
+            <li class="list-group-item mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" class="img-fluid" alt="Resim" style="max-width: 100px; max-height: 100px;">
+                    </div>
+                    <div class="col-md-8">
+                        <h5>@Html.DisplayFor(modelItem => item.Post.Title)</h5>
                         <div class="btn-group" role="group" aria-label="İşlemler">
-                            <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                            <a class="btn btn-danger btn-sm ms-2" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </li>
         }
-    </div>
+    </ul>
 </div>

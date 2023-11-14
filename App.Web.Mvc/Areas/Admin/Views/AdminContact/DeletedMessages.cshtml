@@ -1,0 +1,73 @@
+﻿@model List<App.Web.Entity.Concrete.ContactMessage>
+
+@{
+    ViewData["Title"] = "Deleted Messages";
+}
+
+<div class="container my-4">
+    <h2 class="mt-4">Deleted Messages</h2>
+
+    @if (Model.Any())
+    {
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Deleted At</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var message in Model)
+                    {
+                                <tr>
+                                    <td>@message.Name</td>
+                                    <td>@message.Email</td>
+                                    <td>@message.DeletedAt</td>
+                                    <td>
+                                        <div class="btn-group mt-2" role="group">
+                                            <form id="deleteForm_@message.Id" asp-action="PermanentlyDelete" asp-route-id="@message.Id" method="post">
+                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@message.Id')">
+                                                    <i class="bi bi-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                            <form asp-action="Restore" asp-route-id="@message.Id" method="post">
+                                                <button type="submit" class="btn btn-success btn-sm ms-2">
+                                                    <i class="bi bi-arrow-counterclockwise"></i> Restore
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+    }
+    else
+    {
+            <p class="alert alert-secondary mt-3">No deleted messages.</p>
+    }
+</div>
+
+@section Scripts {
+        <script>
+            function confirmDelete(id, name) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: `You are about to permanently delete the message`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('deleteForm_' + id).submit();
+                    }
+                });
+            }     
+        </script>
+}

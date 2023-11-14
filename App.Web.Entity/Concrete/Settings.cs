@@ -22,9 +22,5 @@ namespace App.Web.Entity.Concrete
         [Required, MaxLength(400), Column(name: "Değeri", TypeName = "nvarchar")]
         public string Value { get; set; }
     }
-    //public class Settings
-    //{
-    //    public int Id { get; set; }
-    //    
-    //}
+   
 }

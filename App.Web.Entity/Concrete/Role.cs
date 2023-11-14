@@ -13,13 +13,6 @@ namespace App.Web.Entity.Concrete
     {
         [Required, MinLength(1), MaxLength(100), Column(name: "Role", TypeName = "nvarchar")]
         public string? Name { get; set; }
-
         public ICollection<User> Users { get; set; }
     }
-    //public class Role
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
-
 }

@@ -15,13 +15,19 @@
                     <div class="post-meta">
                         <span class="text-uppercase font-sm letter-spacing-1">@Model.Post.CreatedAt.ToString("MMMM dd, yyyy")</span>
                     </div>
-                    <div class="post-featured-image mt-4">
-                        <img src="@Model.PostImage.ImagePath" class="img-fluid w-100" alt="featured-image">
-                    </div>
                 </div>
                 <div class="post-body mt-4">
-                    <div class="entry-content">
-                        @Html.Raw(Model.Post.Content)
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="post-featured-image">
+                                <img src="@Model.PostImage.ImagePath" class="img-fluid" alt="featured-image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="entry-content">
+                                @Html.Raw(Model.Post.Content)
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,7 +37,7 @@
                     @foreach (var comment in Model.PostComments)
                     {
                         <div class="media comment-box mb-4">
-                            <img alt="" src="~/Img/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
+                            <img alt="" src="~/Img/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2" style="width: 15%;">
                             <div class="media-body">
                                 <h4 class="mb-0">@comment.User.Name</h4>
                                 <span class="date-comm font-sm text-capitalize text-color">
@@ -55,9 +61,9 @@
                             <input type="email" class="form-control" id="contact-email" name="Email" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="message" name="Message" cols="30" rows="10" placeholder="Message"></textarea>
+                            <textarea class="form-control" id="message" name="Message" cols="30" rows="3" placeholder="Message"></textarea>
                         </div>
-                        <button type="submit" class="btn leave-comment-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
+                        <button type="submit" class="btn btn-primary mb-5">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
                     </form>
                 }
                 else
@@ -65,9 +71,9 @@
                     <h3 class="mb-4 text-center">Leave a Comment</h3>
                     <form asp-action="Detail" method="post">
                         <div class="form-group">
-                            <textarea class="form-control" id="message" name="Message" cols="30" rows="10" placeholder="Message"></textarea>
+                            <textarea class="form-control" id="message" name="Message" cols="30" rows="3" placeholder="Message"></textarea>
                         </div>
-                        <button type="submit" class="btn leave-comment-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
+                        <button type="submit" class="btn btn-primary mb-5">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
                     </form>
                 }
             </div>

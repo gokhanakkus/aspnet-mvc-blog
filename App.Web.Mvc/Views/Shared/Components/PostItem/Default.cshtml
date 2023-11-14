@@ -34,7 +34,7 @@
                                     <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.PostId">
                                         @if (item.Name.Length > 60)
                                         {
-                                            @Html.Raw(item.Name.Substring(0, 60))
+                                            @Html.Raw(item.Name.Substring(0, 60) + "...")
                                         }
                                         else
                                         {

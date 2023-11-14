@@ -1,0 +1,43 @@
+﻿@model App.Web.Entity.Concrete.Settings
+
+@{
+    ViewData["Title"] = "Ayar Sil";
+}
+
+<div class="container mt-3">
+    <h3>Bunu silmek istediğinize emin misiniz?</h3>
+
+    <div>
+        <h4>Ayar</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Value)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Value)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <input type="submit" value="Sil" class="btn btn-danger" /> 
+                <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+            </div>
+        </form>
+    </div>
+</div>

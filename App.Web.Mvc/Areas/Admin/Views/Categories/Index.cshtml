@@ -12,8 +12,7 @@
             <tr>
                 <th>No</th>
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
-                @*<th>@Html.DisplayNameFor(model => model.ParentId)</th>*@
-                @*<th>@Html.DisplayNameFor(model => model.Description)</th>*@
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,11 +21,18 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Id)</td>
                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                    @*<td>@Html.DisplayFor(modelItem => item.ParentId)</td>*@
-                    @*<td>@Html.DisplayNameFor(model => model.Description)</td>*@
                     <td>
-                        <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                        <a class="btn btn-danger ms-2" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                        @if (item.DeletedAt != null)
+                        {
+                            <form asp-action="Restore" asp-route-id="@item.Id" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-success btn-sm ms-2">Geri Yükle</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-danger btn-sm ms-2" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        }
                     </td>
                 </tr>
             }

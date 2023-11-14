@@ -14,13 +14,12 @@ namespace App.Web.Mvc.ViewComponents
         {
             _context = context;
         }
-        public async Task<IViewComponentResult> InvokeAsync(/*[FromRoute] int id*/)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var postItems = await _context.Posts
                 .Include(x => x.Images)
+                .Where(x => x.DeletedAt == null)
                 .ToListAsync();
-
-            //Post post = _context.Posts.Where(c => c.Id == id).FirstOrDefault();
 
             var models = postItems.Select(x => new PostItemViewModel
             {
@@ -32,7 +31,6 @@ namespace App.Web.Mvc.ViewComponents
             }).ToList();
 
             return View(models);
-
         }
     }
 }

@@ -52,12 +52,7 @@
                                 
                                         <a class="nav-link" asp-controller="Category" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
                                 
-                                    }
-                                    @*<a asp-action="Lifestyle" asp-controller="Category">Lifestyle</a>
-                                    <a asp-action="Travel" asp-controller="Category">Travel</a>
-                                    <a asp-action="Explore" asp-controller="Category">Explore</a>
-                                    <a asp-action="Weekends" asp-controller="Category">Weekends</a>
-                                    <a asp-action="Health" asp-controller="Category">Health</a>*@
+                                    }                                 
                                 </div>
                                 </li>
                             <li class="nav-item">
@@ -102,13 +97,7 @@
                                 <a class="dropdown-toggle" href="javascript:void(0);" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
                                     <img src="..\sneat\assets\img\avatars\1.png" alt="User Profile" class="user-profile-image-small rounded-circle" id="profile-picture" style="width: 40px; height: 40px;">
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" id="user-options">
-                                    <li class="dropdown-item"><strong>@User.Identity.Name</strong></li>
-                                    <li class="dropdown-item">
-                                        <a asp-controller="Profile" asp-action="Index">
-                                            <img src="..\Img\user.png" alt="" style="width: 17px; height: 17px;  margin-right: 10px;"> Profilim
-                                        </a>
-                                    </li>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" id="user-options">    
                                     <li class="dropdown-item">
                                         <a asp-controller="Admin" asp-action="Index">
                                             <img src="..\Img\settings.png" alt="" style="width: 17px; height: 17px;  margin-right: 10px;"> Yönetim Paneli
@@ -122,7 +111,6 @@
                                 </ul>
                             </div>
                         </li>
-
                     }
                 </ul>
             </div>

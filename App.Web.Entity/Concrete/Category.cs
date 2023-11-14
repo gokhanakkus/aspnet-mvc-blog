@@ -19,12 +19,7 @@ namespace App.Web.Entity.Concrete
         [MaxLength(200), Column(name: "Açıklama", TypeName = "nvarchar")]
         public string? Description { get; set; }
         public virtual ICollection<CategoryPost> CategoryPosts { get; set; }
+        public DateTime? DeletedAt { get; set; }
 
     }
-    //public class Category
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //    public List<CategoryPost> CategoryPosts { get; set; }
-    //}
 }

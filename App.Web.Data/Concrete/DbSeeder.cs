@@ -57,38 +57,41 @@ namespace App.Web.Data.Concrete
                 context.SaveChanges();
             }
         }
+        
         private static void SeedUsers(AppDbContext context)
         {
             if (!context.Users.Any())
             {
                 var users = new List<User>
-                {
-                    new User
-                    {
-                        Name = "admin",
-                        Email = "admin@blog.com",
-                        Password = "1234",
-                        CreatedAt = DateTime.UtcNow,
-                        RoleId = context.Roles.Single(r => r.Name == "Admin").Id
-                    },
-                    new User
-                    {
-                        Name = "moderator",
-                        Email = "moderator@blog.com",
-                        Password = "1234",
-                        CreatedAt = DateTime.UtcNow,
-                        RoleId = context.Roles.Single(r => r.Name == "Moderator").Id
-                    },
-                    new User
-                    {
-                        Name = "user",
-                        Email = "user@blog.com",
-                        Password = "1234",
-                        CreatedAt = DateTime.UtcNow,
-                        RoleId = context.Roles.Single(r => r.Name == "User").Id
-                        
-                    }
-                };
+        {
+            new User
+            {
+                Name = "admin",
+                Email = "admin@blog.com",
+                Password = "1234",
+                CreatedAt = DateTime.UtcNow,
+                RoleId = context.Roles.Single(r => r.Name == "Admin").Id,
+                
+            },
+            new User
+            {
+                Name = "moderator",
+                Email = "moderator@blog.com",
+                Password = "1234",
+                CreatedAt = DateTime.UtcNow,
+                RoleId = context.Roles.Single(r => r.Name == "Moderator").Id,
+               
+            },
+            new User
+            {
+                Name = "user",
+                Email = "user@blog.com",
+                Password = "1234",
+                CreatedAt = DateTime.UtcNow,
+                RoleId = context.Roles.Single(r => r.Name == "User").Id,
+                
+            }
+        };
 
                 context.Users.AddRange(users);
                 context.SaveChanges();
@@ -221,19 +224,20 @@ namespace App.Web.Data.Concrete
                 context.SaveChanges();
             }
         }
+     
         private static void SeedPosts(AppDbContext context)
         {
             if (!context.Posts.Any())
             {
                 var posts = new List<Post>
-                {
-                    new Post { UserId = 1, Title = "Travel", Content = "How to Make a List for Traveling Alone", IsSlider = true },
-                    new Post { UserId = 2, Title = "Weekends", Content = "A Simple Way to Feel Like Home When You Travel", IsSlider = true },
-                    new Post { UserId = 3, Title = "LifeStyle", Content = "What Type of Traveler Are You?", IsSlider = true },
-                    new Post { UserId = 1, Title = "Health", Content = "How to Plan Your Trip the Right Way", IsSlider = false },
-                    new Post { UserId = 2, Title = "Explore", Content = "8 Powerful Ways to Add Vibrant Color to Your Life", IsSlider = false },
-                    new Post { UserId = 3, Title ="Experience" ,Content="A Road Trip Review of the 2023", IsSlider = false },  
-                };
+        {
+            new Post { UserId = context.Users.Single(u => u.Name == "admin").Id, Title = "Travel", Content = "How to Make a List for Traveling Alone", IsSlider = true },
+            new Post { UserId = context.Users.Single(u => u.Name == "moderator").Id, Title = "Weekends", Content = "A Simple Way to Feel Like Home When You Travel", IsSlider = true },
+            new Post { UserId = context.Users.Single(u => u.Name == "user").Id, Title = "LifeStyle", Content = "What Type of Traveler Are You?", IsSlider = true },
+            new Post { UserId = context.Users.Single(u => u.Name == "admin").Id, Title = "Health", Content = "How to Plan Your Trip the Right Way", IsSlider = false },
+            new Post { UserId = context.Users.Single(u => u.Name == "moderator").Id, Title = "Explore", Content = "8 Powerful Ways to Add Vibrant Color to Your Life", IsSlider = false },
+            new Post { UserId = context.Users.Single(u => u.Name == "user").Id, Title ="Experience" ,Content="A Road Trip Review of the 2023", IsSlider = false },
+        };
 
                 context.Posts.AddRange(posts);
                 context.SaveChanges();
