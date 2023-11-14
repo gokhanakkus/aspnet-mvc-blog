@@ -14,10 +14,9 @@
             <tr>
                 <th>No</th>
                 <th>@Html.DisplayNameFor(model => model.Title)</th>
-                <th>@Html.DisplayNameFor(model => model.CategoryPosts)</th>
                 <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
                 <th>@Html.DisplayNameFor(model => model.IsSlider)</th>
-                <th>@Html.DisplayNameFor(model => model.UserId)</th>
+                <th>@Html.DisplayNameFor(model => model.User.Name)</th>
                 <th>@Html.DisplayNameFor(model => model.UpdatedAt)</th>
                 <th>@Html.DisplayNameFor(model => model.DeletedAt)</th>
                 <th></th>
@@ -29,17 +28,16 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Id)</td>
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td>@Html.DisplayNameFor(model => model.CategoryPosts)</td>
                     <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
                     <td>@Html.DisplayFor(modelItem => item.IsSlider)</td>
-                    <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
                     <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
                     <td>@Html.DisplayFor(modelItem => item.DeletedAt)</td>
                     <td>
-                        <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                        <a class="btn btn-info" asp-controller="PostImage" asp-action="Detail" asp-route-id="@item.Id">Images</a>
-                        <a class="btn btn-dark" asp-controller="PostComment" asp-action="Detail" asp-route-id="@item.Id">Comments</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                        <a class="btn btn-info btn-sm" asp-controller="PostImage" asp-action="Detail" asp-route-id="@item.Id">Images</a>
+                        <a class="btn btn-dark btn-sm" asp-controller="PostComment" asp-action="Detail" asp-route-id="@item.Id">Comments</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
                     </td>
                 </tr>
             }

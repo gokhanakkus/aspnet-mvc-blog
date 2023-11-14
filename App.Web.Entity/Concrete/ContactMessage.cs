@@ -13,5 +13,6 @@ namespace App.Web.Entity.Concrete
         public string Email { get; set; }
         public string Message { get; set; }
         public DateTime CreationDate { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

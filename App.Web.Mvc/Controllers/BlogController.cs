@@ -17,31 +17,75 @@ namespace App.Web.Mvc.Controllers
             _context = context;
         }
 
+        //[HttpGet]
+        //public IActionResult Search([FromQuery] string q)
+        //{
+        //    List<int> Ids = (
+        //        from CategoryPosts in _context.CategoryPosts
+        //        where CategoryPosts.Category.Name.Contains(q) || CategoryPosts.Post.Content.Contains(q) || CategoryPosts.Post.Title.Contains(q)
+        //        select CategoryPosts.PostId
+        //        ).ToList();
+        //    List<SearchViewModel> Results = new List<SearchViewModel>();
+        //    List<Post> posts = new List<Post>();
+        //    foreach (int i in Ids)
+        //    {
+        //        if (posts.Where(c => c.Id == i).FirstOrDefault() is null)
+        //        {
+        //            posts.Add(_context.Posts.Where(c => c.Id == i).FirstOrDefault());
+        //            Results.Add(new SearchViewModel()
+        //            {
+        //                Post = _context.Posts.Where(c => c.Id == i).FirstOrDefault(),
+        //                Category = _context.Categories.Find(_context.CategoryPosts.Where(c => c.PostId == i).FirstOrDefault().CategoryId),
+        //                PostImage = _context.PostImages.Where(x => x.PostId == i).FirstOrDefault()
+        //            });
+        //        }
+        //    }
+        //    return View(Results);
+        //}
         [HttpGet]
         public IActionResult Search([FromQuery] string q)
         {
             List<int> Ids = (
                 from CategoryPosts in _context.CategoryPosts
-                where CategoryPosts.Category.Name.Contains(q) || CategoryPosts.Post.Content.Contains(q) || CategoryPosts.Post.Title.Contains(q)
+                where (CategoryPosts.Category.Name.Contains(q) ||
+                       CategoryPosts.Post.Content.Contains(q) ||
+                       CategoryPosts.Post.Title.Contains(q)) &&
+                       CategoryPosts.Post.DeletedAt == null
                 select CategoryPosts.PostId
-                ).ToList();
+            ).ToList();
+
             List<SearchViewModel> Results = new List<SearchViewModel>();
             List<Post> posts = new List<Post>();
+
             foreach (int i in Ids)
             {
                 if (posts.Where(c => c.Id == i).FirstOrDefault() is null)
                 {
-                    posts.Add(_context.Posts.Where(c => c.Id == i).FirstOrDefault());
+                    posts.Add(_context.Posts
+                        .Where(c => c.Id == i && c.DeletedAt == null)
+                        .FirstOrDefault());
+
                     Results.Add(new SearchViewModel()
                     {
-                        Post = _context.Posts.Where(c => c.Id == i).FirstOrDefault(),
-                        Category = _context.Categories.Find(_context.CategoryPosts.Where(c => c.PostId == i).FirstOrDefault().CategoryId),
-                        PostImage = _context.PostImages.Where(x => x.PostId == i).FirstOrDefault()
+                        Post = _context.Posts
+                            .Where(c => c.Id == i && c.DeletedAt == null)
+                            .FirstOrDefault(),
+                        Category = _context.Categories
+                            .Find(_context.CategoryPosts
+                                .Where(c => c.PostId == i && _context.Posts.Find(i).DeletedAt == null)
+                                .FirstOrDefault()
+                                ?.CategoryId),
+                        PostImage = _context.PostImages
+                            .Where(x => x.PostId == i)
+                            .FirstOrDefault()
                     });
                 }
             }
+
             return View(Results);
         }
+
+
 
         //[Route("Blog")] //hatalı geçici olarak yazıldı.CategoryPosts yerine category olacak.
         //public IActionResult Detail(int id)

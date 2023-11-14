@@ -16,15 +16,23 @@ namespace App.Web.Mvc.Controllers
 
         public IActionResult Index()
         {
-            var gonderi = _context.Posts.OrderByDescending(x => x.CreatedAt).First();
-            var catid = _context.CategoryPosts.Where(x => x.PostId == gonderi.Id).First().CategoryId;
-            var model = new HomeViewModel()
+            var gonderi = _context.Posts.OrderByDescending(x => x.CreatedAt).FirstOrDefault();
+
+            if (gonderi != null)
             {
-                Post = gonderi,
-                Category = _context.Categories.Find(catid),
-                PostImage = _context.PostImages.Where(x => x.PostId == gonderi.Id).FirstOrDefault()
-            };
-            return View(model);
+                var catid = _context.CategoryPosts.Where(x => x.PostId == gonderi.Id).Select(x => x.CategoryId).FirstOrDefault();
+                var model = new HomeViewModel()
+                {
+                    Post = gonderi,
+                    Category = _context.Categories.Find(catid),
+                    PostImage = _context.PostImages.Where(x => x.PostId == gonderi.Id).FirstOrDefault()
+                };
+                return View(model);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()

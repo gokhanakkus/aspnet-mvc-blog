@@ -76,10 +76,6 @@ namespace App.Web.Data.Concrete
                 .HasForeignKey(pi => pi.PostId)
                 .OnDelete(DeleteBehavior.ClientCascade);
 
-            //modelBuilder.Entity<CategoryPost>()
-            //    .HasKey(cp => new { cp.CategoryId, cp.PostId }); // Eğer index oluşturmak amaçlanıyorsa HasIndex'le olması gerekiyor gibi
-
-
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -49,28 +49,25 @@
                     <form asp-action="Register" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-floating mb-3">
-
-                            <input asp-for="Name" class="form-control" type="text" placeholder="Ad" />
                             <label asp-for="Name">Ad</label>
+                            <input asp-for="Name" class="form-control" type="text" placeholder="Ad" />    
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 
                         <div class="form-floating mb-3">
-
-                            <input asp-for="Email" class="form-control" type="email" placeholder="name@example.com" />
                             <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" type="email" placeholder="name@example.com" />  
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        <div class="form-floating mb-3">
 
-                            <input asp-for="Password" class="form-control" type="password" placeholder="Parola" />
+                        <div class="form-floating mb-3">
                             <label asp-for="Password">Parola</label>
+                            <input asp-for="Password" class="form-control" type="password" placeholder="Parola" />      
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="form-floating mb-3">
-
-                            <input asp-for="City" class="form-control" type="text" placeholder="Şehir" />
                             <label asp-for="City">Şehir</label>
+                            <input asp-for="City" class="form-control" type="text" placeholder="Şehir" />    
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">

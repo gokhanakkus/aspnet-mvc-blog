@@ -39,12 +39,6 @@ namespace App.Web.Mvc.Controllers
         {
             try
             {
-                //if (!ModelState.IsValid)
-                //{
-                //    ModelState.AddModelError("", "Boş geçilemeyecek alanları lütfen doldurun!");
-                //}
-                //else
-                //{
                     var kullanici = _context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
                     if (kullanici != null)
                     {
@@ -66,8 +60,6 @@ namespace App.Web.Mvc.Controllers
                         await _context.SaveChangesAsync();
                         return Redirect("/Auth/Login");
                     }
-
-                //}
             }
             catch (Exception)
             {
@@ -203,6 +195,6 @@ namespace App.Web.Mvc.Controllers
 
             } 
             return RedirectToAction("Index", "Home");
-        }
+        }  
     }
 }

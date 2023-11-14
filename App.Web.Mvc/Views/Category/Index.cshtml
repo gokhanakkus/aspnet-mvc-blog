@@ -5,17 +5,6 @@
 
 <section class="section-padding pt-4">
     <div class="container-fluid">
-        @*<div class="row">
-            <div class="col-12">
-                <div class="breadcumb-area section_padding_50">
-                    <div class="breacumb-content d-flex align-items-center justify-content-between">
-                        <div class="post-tag">
-                            <a asp-controller="Category" asp-action="Index" asp-route-id="@Model.Category.Id">@Model.Category.Name</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
         <div class="row">
             @foreach (var item in Model.Post)
             {

@@ -23,7 +23,7 @@
                         <td>@message.Email</td>
                         <td>@message.Message</td>
                         <td>
-                            <button class="btn btn-danger" onclick="deleteMessage(@message.Id)">Sil</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteMessage(@message.Id)">Sil</button>
                         </td>
                     </tr>
                 }
@@ -33,15 +33,15 @@
 </div>
 
 <form method="post" asp-controller="AdminContact" asp-action="Delete" id="deleteForm">
-    <input type="hidden" name="id" id="messageId" value="" /> 
-    <button type="submit" class="btn btn-danger" style="display: none;">Sil</button>
+    <input type="hidden" name="id" id="messageId" value="" />
+    <button type="submit" class="btn btn-danger btn-sm" style="display: none;">Sil</button>
 </form>
 
 <script>
     function deleteMessage(id) {
-        
+
         document.getElementById("messageId").value = id;
-        
+
         document.getElementById("deleteForm").submit();
     }
 </script>

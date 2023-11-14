@@ -17,40 +17,30 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
         {
             _context = context;
         }
-
-        // GET: UserController
+  
         public ActionResult Index()
         {
             var model = _context.Users.ToList();
             return View(model);
         }
 
-        // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: UserController/Create
         public ActionResult Create()
         {
             ViewBag.RoleId = new SelectList(_context.Roles.ToList(), "Id", "Name");
             return View();
         }
 
-        // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(User collection)
         {
             try
-            {
-                //if (!ModelState.IsValid)
-                //{
-                //    ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
-                //}
-                //else
-                //{
+            {             
                     if (_context.Users.Any(x => x.Email == collection.Email))
                     {
                         ModelState.AddModelError("", "Bu Emailde kullanıcı var.");
@@ -70,7 +60,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
                         return RedirectToAction(nameof(Index));
                     }
 
-                //}
             }
             catch
             {
@@ -80,7 +69,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             return View();
         }
 
-        // GET: UserController/Edit/5
         public ActionResult Update(int? id)
         {
             if (id is null)
@@ -96,19 +84,12 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             return View(model);
         }
 
-        // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update(int id, User collection)
         {
             try
-            {
-                //if (!ModelState.IsValid)
-                //{
-                //    ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
-                //}
-                //else
-                //{
+            {         
                     if (_context.Users.Where(x => x.Id == collection.Id).FirstOrDefault().Email != collection.Email && _context.Users.Any(x => x.Email == collection.Email))
                     {
                         ModelState.AddModelError("", "Bu Emailde kullanıcı var.");
@@ -127,7 +108,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
 
                         return RedirectToAction(nameof(Index));
                     }
-                //}
             }
             catch
             {
@@ -137,7 +117,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             return View();
         }
 
-        // GET: UserController/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id is null)
@@ -153,7 +132,6 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             return View(model);
         }
 
-        // POST: UserController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, User collection)

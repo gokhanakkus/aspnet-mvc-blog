@@ -15,10 +15,8 @@ namespace App.Web.Mvc.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //var database = new DataBase();
-            //var sliderItem = database.SliderItems;
             var sliderItem = await _context.Posts
-                .Where(x => x.IsSlider)
+                .Where(x => x.IsSlider && x.DeletedAt == null)
                 .Select(x => new SliderViewModel
                 {
                     Title = x.Title,
@@ -27,9 +25,10 @@ namespace App.Web.Mvc.ViewComponents
                     PostId = x.Id,
                     Content = x.Content
                 })
-                .ToListAsync(); 
+                .ToListAsync();
+
             return View(sliderItem);
-            
         }
+
     }
 }

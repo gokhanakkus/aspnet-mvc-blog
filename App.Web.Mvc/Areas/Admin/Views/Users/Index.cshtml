@@ -37,8 +37,8 @@
                         <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
                         <td>@Html.DisplayFor(modelItem => item.DeletedAt)</td>
                         <td>
-                            <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
                         </td>
                     </tr>
                 }
