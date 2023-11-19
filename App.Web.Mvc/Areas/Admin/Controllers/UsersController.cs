@@ -43,7 +43,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             {             
                     if (_context.Users.Any(x => x.Email == collection.Email))
                     {
-                        ModelState.AddModelError("", "Bu Emailde kullanıcı var.");
+                        ModelState.AddModelError("", "There is a user in this Email.");
                     }
                     else
                     {
@@ -91,7 +91,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             {         
                     if (_context.Users.Where(x => x.Id == collection.Id).FirstOrDefault().Email != collection.Email && _context.Users.Any(x => x.Email == collection.Email))
                     {
-                        ModelState.AddModelError("", "Bu Emailde kullanıcı var.");
+                        ModelState.AddModelError("", "There is a user in this Email.");
                     }
                     else
                     {

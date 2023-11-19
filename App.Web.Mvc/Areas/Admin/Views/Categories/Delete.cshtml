@@ -1,10 +1,10 @@
 ﻿@model App.Web.Entity.Concrete.Category
 @{
-    ViewData["Title"] = "Kategori Sil";
+    ViewData["Title"] = "Delete Category";
 }
 
 <div class="container">
-    <h3 class="mt-5">Bunu silmek istediğinize emin misiniz?</h3>
+    <h3 class="mt-5">Are you sure you want to delete this?</h3>
     <hr />
     <div>
         <h4>Kategori</h4>
@@ -21,8 +21,8 @@
         <form asp-action="Delete">
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <input type="submit" value="Sil" class="btn btn-danger" />
-                <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-secondary ml-2">Return List</a>
             </div>
         </form>
     </div>

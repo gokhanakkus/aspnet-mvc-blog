@@ -220,6 +220,11 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
                     .Select(x => x.Id)
                     .ToList();
 
+                foreach (var categoryId in existingCategoryIds)
+                {
+                    _context.CategoryPosts.Remove(_context.CategoryPosts.Find(categoryId));
+                }
+
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }

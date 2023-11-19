@@ -1,10 +1,10 @@
 ﻿@model App.Web.Entity.Concrete.User
 @{
-    ViewData["Title"] = "Yeni Kullanıcı Ekle";
+    ViewData["Title"] = "Add New User";
 }
 
 <div class="container mt-5">
-    <h3 class="mb-4">Yeni Kullanıcı Ekle</h3>
+    <h3 class="mb-4">Add New User</h3>
     <hr />
 
     <div class="row">
@@ -13,25 +13,25 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="form-group">
-                    <label asp-for="Name" class="control-label">Adı:</label>
+                    <label asp-for="Name" class="control-label">Name:</label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Email" class="control-label">E-posta:</label>
+                    <label asp-for="Email" class="control-label">Email:</label>
                     <input asp-for="Email" class="form-control" type="email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="City" class="control-label">Şehir:</label>
+                    <label asp-for="City" class="control-label">City:</label>
                     <input asp-for="City" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Password" class="control-label">Şifre:</label>
+                    <label asp-for="Password" class="control-label">Password:</label>
                     <input asp-for="Password" class="form-control" type="password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-primary">Yeni Ekle</button>
+                    <button type="submit" class="btn btn-primary">Add New</button>
                     <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
                 </div>
             </form>

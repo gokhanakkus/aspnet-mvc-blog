@@ -1,27 +1,27 @@
 ﻿@model IEnumerable<App.Web.Entity.Concrete.User>
 @{
-    ViewData["Title"] = "Kullanıcılar";
+    ViewData["Title"] = "Users";
 }
 
 <div class="container mt-5">
-    <h3>Kullanıcılar</h3>
+    <h3>Users</h3>
     <hr />
     <p>
-        <a asp-action="Create" class="btn btn-success">Yeni Kullanıcı Ekle</a>
+        <a asp-action="Create" class="btn btn-success">Add New User</a>
     </p>
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>No</th>
-                    <th>Adı</th>
-                    <th>E-posta</th>
-                    <th>Şehir</th>
-                    <th>Oluşturulma Tarihi</th>
-                    <th>Rol</th>
-                    <th>Güncelleme Tarihi</th>
-                    <th>Silinme Tarihi</th>
-                    <th>İşlemler</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Creation Date</th>
+                    <th>Role</th>
+                    <th>Update Date</th>
+                    <th>Deletion Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,8 +37,9 @@
                         <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
                         <td>@Html.DisplayFor(modelItem => item.DeletedAt)</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
                         </td>
                     </tr>
                 }

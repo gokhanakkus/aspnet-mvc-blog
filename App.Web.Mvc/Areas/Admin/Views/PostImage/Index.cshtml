@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<App.Web.Entity.Concrete.PostImage>
 
 @{
-    ViewData["Title"] = "Resimler";
+    ViewData["Title"] = "Images";
 }
 
 <div class="container">
-    <h2 class="my-4">Resimler</h2>
-    <a asp-action="Create" class="btn btn-primary mb-3">Yeni Resim Ekle</a>
-    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary mb-3">Post Listesine Dön</a>
+    <h2 class="my-4">Images</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Add New Image</a>
+    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary mb-3">Return To Post List</a>
 
     <ul class="list-group">
         @foreach (var item in Model)
@@ -15,13 +15,13 @@
             <li class="list-group-item mb-3">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" class="img-fluid" alt="Resim" style="max-width: 100px; max-height: 100px;">
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" class="img-fluid" alt="Image" style="max-width: 100px; max-height: 100px;">
                     </div>
                     <div class="col-md-8">
                         <h5>@Html.DisplayFor(modelItem => item.Post.Title)</h5>
-                        <div class="btn-group" role="group" aria-label="İşlemler">
-                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                            <a class="btn btn-danger btn-sm ms-2" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                            <a class="btn btn-danger btn-sm ms-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </div>
                     </div>
                 </div>

@@ -13,10 +13,10 @@ namespace App.Web.Entity.Concrete
     {
         public int? ParentId { get; set; }
 
-        [Required, MaxLength(100), Column(name: "Ad", TypeName = "nvarchar")]
+        [Required, MaxLength(100), Column(name: "Name", TypeName = "nvarchar")]
         public string Name { get; set; } = string.Empty;
 
-        [MaxLength(200), Column(name: "Açıklama", TypeName = "nvarchar")]
+        [MaxLength(200), Column(name: "Description", TypeName = "nvarchar")]
         public string? Description { get; set; }
         public virtual ICollection<CategoryPost> CategoryPosts { get; set; }
         public DateTime? DeletedAt { get; set; }

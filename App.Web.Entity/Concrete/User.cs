@@ -14,11 +14,11 @@ namespace App.Web.Entity.Concrete
     {
         [Required, MaxLength(200), Column(TypeName = "nvarchar"), DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Required, MaxLength(100), DataType(DataType.Password), Column(name: "Şifre", TypeName = "nvarchar")]
+        [Required, MaxLength(100), DataType(DataType.Password), Column(name: "Password", TypeName = "nvarchar")]
         public string Password { get; set; }
-        [Required, MaxLength(100), Column(name: "Ad", TypeName = "nvarchar")]
+        [Required, MaxLength(100), Column(name: "Name", TypeName = "nvarchar")]
         public string Name { get; set; }
-        [MaxLength(100), Column(name: "Şehir", TypeName = "nvarchar")]
+        [MaxLength(100), Column(name: "City", TypeName = "nvarchar")]
         public string? City { get; set; }
         public int RoleId { get; set; }
         public virtual Role? Role { get; set; }

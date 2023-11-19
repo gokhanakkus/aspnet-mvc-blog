@@ -1,10 +1,10 @@
 ﻿@model PostCRUDViewModel
 @{
-    ViewData["Title"] = "Yeni Post Ekle";
+    ViewData["Title"] = "Add New Post";
 }
 
 <div class="container">
-    <h2 class="mt-4">Yeni Post Ekle</h2>
+    <h2 class="mt-4">Add New Post</h2>
     <hr />
 
     <div class="row">
@@ -13,13 +13,13 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="mb-3">
-                    <label asp-for="Title" class="form-label">Başlık:</label>
+                    <label asp-for="Title" class="form-label">Title:</label>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Content" class="form-label">İçerik:</label>
+                    <label asp-for="Content" class="form-label">Content:</label>
                     <textarea id="editor" asp-for="Content" class="form-control" rows="5"></textarea>
                     <span asp-validation-for="Content" class="text-danger"></span>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="CategoryIds" class="form-label">Kategoriler:</label>
+                    <label asp-for="CategoryIds" class="form-label">Categories:</label>
                     <select asp-for="CategoryIds" id="Category_dropdown" multiple class="form-select">
                         @foreach (var item in Model.Categories)
                         {
@@ -41,8 +41,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Yeni Ekle</button>
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                    <button type="submit" class="btn btn-primary">Add New</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Return List</a>
                 </div>
             </form>
         </div>

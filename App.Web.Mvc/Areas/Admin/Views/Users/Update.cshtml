@@ -1,10 +1,10 @@
 ﻿@model App.Web.Entity.Concrete.User
 @{
-    ViewData["Title"] = "Kullanıcı Düzenle";
+    ViewData["Title"] = "Edit User";
 }
 
 <div class="container mt-5">
-    <h3>Kullanıcı Düzenle</h3>
+    <h3>Edit User</h3>
     <hr />
 
     <div class="row">
@@ -13,38 +13,38 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="mb-3">
-                    <label asp-for="Name" class="form-label">Adı:</label>
+                    <label asp-for="Name" class="form-label">Name:</label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Email" class="form-label">E-posta:</label>
+                    <label asp-for="Email" class="form-label">Email:</label>
                     <input asp-for="Email" class="form-control" type="email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="City" class="form-label">Şehir:</label>
+                    <label asp-for="City" class="form-label">City:</label>
                     <input asp-for="City" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Password" class="form-label">Şifre:</label>
+                    <label asp-for="Password" class="form-label">Password:</label>
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="RoleId" class="form-label">Rol:</label>
+                    <label asp-for="RoleId" class="form-label">Role:</label>
                     <select asp-for="RoleId" class="form-select" asp-items="ViewBag.RoleId"></select>
                     <span asp-validation-for="RoleId" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
                 </div>
             </form>
         </div>

@@ -19,10 +19,10 @@ namespace App.Web.Entity.Concrete
 
         public virtual User? User { get; set; }
 
-        [Column(name: "Yorum", TypeName = "text")]
+        [Column(name: "Comment", TypeName = "text")]
         public string? Comment { get; set; }
 
-        [Column(name: "Aktif?", TypeName = "bit")]
+        [Column(name: "Active?", TypeName = "bit")]
         public bool IsActive { get; set; }
 
     }

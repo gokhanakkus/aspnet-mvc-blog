@@ -1,10 +1,10 @@
 ﻿@model App.Web.Entity.Concrete.PostImage
 @{
-    ViewData["Title"] = "Yeni Resim Ekle";
+    ViewData["Title"] = "Add New Image";
 }
 
 <div class="container">
-    <h2 class="mt-4">Yeni Resim Ekle</h2>
+    <h2 class="mt-4">Add New Image</h2>
     <hr />
 
     <div class="row">
@@ -13,21 +13,21 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="mb-3">
-                    <label asp-for="PostId" class="form-label">Gönderi Seçin:</label>
+                    <label asp-for="PostId" class="form-label">Select Post:</label>
                     <select asp-for="PostId" class="form-select" asp-items="ViewBag.PostId">
                     </select>
                     <span asp-validation-for="PostId" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="ImagePath" class="form-label">Resim Seçin:</label>
+                    <label asp-for="ImagePath" class="form-label">Select Image:</label>
                     <input asp-for="ImagePath" type="file" class="form-control" />
                     <span asp-validation-for="ImagePath" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Yeni Ekle</button>
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                    <button type="submit" class="btn btn-primary">Add New</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Return List</a>
                 </div>
             </form>
         </div>

@@ -13,10 +13,10 @@ namespace App.Web.Entity.Concrete
     public class Page : BaseAuditEntity
     {
 
-        [Required, MaxLength(200), Column(name: "Başlık", TypeName = "nvarchar")]
+        [Required, MaxLength(200), Column(name: "Title", TypeName = "nvarchar")]
         public string Title { get; set; }
 
-        [Required, Column(name: "İçerik", TypeName = "text")]
+        [Required, Column(name: "Content", TypeName = "text")]
         public string Content { get; set; }
 
         public string WhoIsMe { get; set; }

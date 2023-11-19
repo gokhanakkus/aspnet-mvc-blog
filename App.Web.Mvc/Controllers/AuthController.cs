@@ -42,7 +42,7 @@ namespace App.Web.Mvc.Controllers
                     var kullanici = _context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
                     if (kullanici != null)
                     {
-                        ModelState.AddModelError("", "Bu maili kullanan bir kullanıcı zaten var");
+                        ModelState.AddModelError("", "A user with this email already exists");
                         return RedirectToAction(nameof(ForgotPassword));
                     }
                     else
@@ -85,14 +85,14 @@ namespace App.Web.Mvc.Controllers
                 user.redirectUrl = url;
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Boş geçilemez!");
+                    ModelState.AddModelError("", "Cannot be empty!");
                 }
                 if (ModelState.IsValid)
                 {
                     var kullanici = _context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).FirstOrDefault();
                     if (kullanici == null)
                     {
-                        ModelState.AddModelError("", "Hatalı giriş yaptınız.");
+                        ModelState.AddModelError("", "Invalid login.");
                     }
                     else
                     {
@@ -121,7 +121,7 @@ namespace App.Web.Mvc.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("", "Hata Oluştu!");
+                ModelState.AddModelError("", "An error occurred!");
             }
             return View();
         }
@@ -138,20 +138,20 @@ namespace App.Web.Mvc.Controllers
 
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Geçersiz email...");
+                ModelState.AddModelError("", "Invalid email.");
                 return View(forgotPassword);
             }
             var kullanici = _context.Users.Where(x => x.Email == forgotPassword.Email).FirstOrDefault();
             if (kullanici == null)
             {
-                ModelState.AddModelError("", "Bu mailde bir kullanıcı yok!");
+                ModelState.AddModelError("", "No user with this email!");
                 return View(forgotPassword);
             }
             else
             {
                 await EmailSend.SendMailAsync(kullanici);
 
-                ViewBag.Message = "Emailinize sifre degistirme talebinize iliskin mesaj gonderilmistir.";
+                ViewBag.Message = "Password change instructions sent to your email.";
 
                 return View();
 

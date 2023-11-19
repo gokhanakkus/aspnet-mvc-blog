@@ -73,7 +73,7 @@
         }
       },
       xaxis: {
-        categories: ['Ocak', 'Subat', 'Mart', 'Nisan', 'Mayis', 'Haziran', 'Temmuz', 'Agustos', 'Eylul', 'Ekim', 'Kasim','Aralik'],
+          categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December'],
         labels: {
           style: {
             fontSize: '13px',

@@ -8,10 +8,10 @@
             <thead class="table-primary">
                 <tr>
                     <th>#</th>
-                    <th>Ad</th>
-                    <th>E-posta</th>
-                    <th>Mesaj</th>
-                    <th>İşlemler</th>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Message</th>
+                    <th>Transactions</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +23,7 @@
                         <td>@message.Email</td>
                         <td>@message.Message</td>
                         <td>
-                            <button class="btn btn-danger btn-sm" onclick="deleteMessage(@message.Id)">Sil</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteMessage(@message.Id)">Delete</button>
                         </td>
                     </tr>
                 }
@@ -34,7 +34,7 @@
 
 <form method="post" asp-controller="AdminContact" asp-action="Delete" id="deleteForm">
     <input type="hidden" name="id" id="messageId" value="" />
-    <button type="submit" class="btn btn-danger btn-sm" style="display: none;">Sil</button>
+    <button type="submit" class="btn btn-danger btn-sm" style="display: none;">Delete</button>
 </form>
 
 <script>
