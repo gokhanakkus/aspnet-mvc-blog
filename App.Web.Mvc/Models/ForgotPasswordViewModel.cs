@@ -6,7 +6,7 @@ namespace App.Web.Mvc.Models
     {
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "{0} boş bırakılamaz.")]
+        [Required(ErrorMessage = "{0} cannot be empty.")]
         public string Email { get; set; }
     }
 }

@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<App.Web.Entity.Concrete.PostImage>
 @{
-    ViewData["Title"] = "Resimler";
+    ViewData["Title"] = "Images";
 }
 
 <div class="container">
-    <h2 class="mt-4">Resimler</h2>
-    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
-    <a asp-action="Create" class="btn btn-primary ml-2">Yeni Resim Ekle</a>
+    <h2 class="mt-4">Images</h2>
+    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary ml-2">Return List</a>
+    <a asp-action="Create" class="btn btn-primary ml-2">Add New Image</a>
     <hr />
 
     <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Haber Başlığı</th>
-                <th>Resim</th>
-                <th>İşlemler</th>
+                <th>Post Title</th>
+                <th>Image</th>
+                <th>Transaction</th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +25,12 @@
                     <td>@Html.DisplayFor(modelItem => item.Id)</td>
                     <td>@Html.DisplayFor(modelItem => item.Post.Title)</td>
                     <td>
-                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" alt="Resim" class="img-thumbnail" style="max-height: 100px;" />
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" alt="Image" class="img-thumbnail" style="max-height: 100px;" />
                     </td>
                     <td>
-                        <div class="btn-group" role="group" aria-label="İşlemler">
-                            <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        <div class="btn-group" role="group" aria-label="Transaction">
+                                <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </div>
                     </td>
                 </tr>

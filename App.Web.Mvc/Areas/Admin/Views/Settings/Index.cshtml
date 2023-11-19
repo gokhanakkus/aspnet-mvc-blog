@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<App.Web.Entity.Concrete.Settings>
 
 @{
-    ViewData["Title"] = "Ayarlar";
+    ViewData["Title"] = "Settings";
 }
 
 <div class="container mt-3">
     <h2>@ViewData["Title"]</h2>
 
     <p>
-        <a asp-action="Create" class="btn btn-outline-primary">Yeni Ayar Ekle</a>
+        <a asp-action="Create" class="btn btn-outline-primary">Add New Setting</a>
     </p>
 
     <table class="table table-striped table-hover">
@@ -36,8 +36,8 @@
                     <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
                     <td>@Html.DisplayFor(modelItem => item.DeletedAt)</td>
                     <td>
-                        <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                        <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }

@@ -14,10 +14,10 @@ namespace App.Web.Entity.Concrete
         public int UserId { get; set; }
         public virtual User User { get; set; } = null!;
 
-        [MaxLength(200), Column(name: "Başlık", TypeName = "nvarchar")]
+        [MaxLength(200), Column(name: "Title", TypeName = "nvarchar")]
         public string Title { get; set; }
 
-        [MinLength(200), MaxLength(4000), Column(name: "İçerik", TypeName = "nvarchar")]
+        [MinLength(200), MaxLength(4000), Column(name: "Content", TypeName = "nvarchar")]
         public string Content { get; set; }
         public bool IsSlider { get; set; }
         public virtual ICollection<PostComment> Comments { get; set; }

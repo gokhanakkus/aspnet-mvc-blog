@@ -16,10 +16,10 @@ namespace App.Web.Entity.Concrete
         [ForeignKey(nameof(UserId))]
         public virtual User? User { get; set; }
 
-        [Required, MaxLength(200), Column(name: "Ad", TypeName = "nvarchar")]
+        [Required, MaxLength(200), Column(name: "Name", TypeName = "nvarchar")]
         public string Name { get; set; }
 
-        [Required, MaxLength(400), Column(name: "Değeri", TypeName = "nvarchar")]
+        [Required, MaxLength(400), Column(name: "Value", TypeName = "nvarchar")]
         public string Value { get; set; }
     }
    

@@ -5,14 +5,14 @@ namespace App.Web.Mvc.Models
 {
     public class ContactViewModel
     {
-        [Required(ErrorMessage = "Adınızı giriniz.")]
+        [Required(ErrorMessage = "Enter your name.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "E-posta adresinizi giriniz.")]
-        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz.")]
+        [Required(ErrorMessage = "Enter your email address.")]
+        [EmailAddress(ErrorMessage = "Enter a valid email address.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Mesajınızı giriniz.")]
+        [Required(ErrorMessage = "Enter your message.")]
         public string Message { get; set; }
     }
 }

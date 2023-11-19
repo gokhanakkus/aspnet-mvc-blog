@@ -1,6 +1,6 @@
 ﻿@model App.Web.Entity.Concrete.Category
 @{
-    ViewData["Title"] = "Yeni Kategori Ekle";
+    ViewData["Title"] = "Add New Category";
 }
 
 <div class="container mt-5">
@@ -11,25 +11,25 @@
             <form asp-action="Create" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Name" class="control-label">Kategori Adı</label>
+                    <label asp-for="Name" class="control-label">Category Name</label>
                     <input asp-for="Name" class="form-control mb-3" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group" style="display:none;">
-                    <label asp-for="Description" class="control-label">Açıklama</label>
+                    <label asp-for="Description" class="control-label">Description</label>
                     <input asp-for="Description" class="form-control mb-3" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ParentId" class="control-label">Üst Kategori</label>
+                    <label asp-for="ParentId" class="control-label">Parent Category</label>
                     <select asp-for="ParentId" class="form-select" asp-items="ViewBag.ParentId">
-                        <option value="0">Ana Kategori</option>
+                        <option value="0">Main Category</option>
                     </select>
                     <span asp-validation-for="ParentId" class="text-danger"></span>
                 </div>
                 <div class="form-group mt-3">
-                    <input type="submit" value="Yeni Ekle" class="btn btn-primary" />
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Dön</a>
+                    <input type="submit" value="Add New" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Return List</a>
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 ﻿@model App.Web.Entity.Concrete.User
 
 @{
-    ViewData["Title"] = "Admin Anasayfa";
+    ViewData["Title"] = "Admin Homepage";
 }
 <div class="content-wrapper">
 
@@ -35,7 +35,7 @@
 
                                     <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-paper-plane"></i>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">Toplam Yayınlanan <br /> Post Sayısı</span>
+                                <span class="fw-semibold d-block mb-1">Total Publised <br /> Post</span>
                                 <h3 class="card-title mb-2" id="totalPostCount">6</h3>
                                 <small class="text-success fw-semibold"></small>
                             </div>
@@ -47,7 +47,7 @@
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-category"></i>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">Toplam Eklenen <br /> Kategori Sayısı</span>
+                                <span class="fw-semibold d-block mb-1">Total Add <br /> Category</span>
                                 <h3 class="card-title text-nowrap mb-1" id="totalCategoryCount">6</h3>
                                 <small class="text-success fw-semibold"></small>
                             </div>
@@ -60,7 +60,7 @@
                 <div class="card">
                     <div class="row row-bordered g-0">
                         <div class="col-md-12">
-                            <h5 class="card-header m-0 me-2 pb-3">@DateTime.Now.Year Yılının Post Yayınlama Analizi</h5>
+                            <h5 class="card-header m-0 me-2 pb-3">Post publication analysis of @DateTime.Now.Year </h5>
                             <div id="totalRevenueChart" class="px-2"></div>
                         </div> 
                     </div>
@@ -75,7 +75,7 @@
                                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                                     <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                                         <div class="card-title">
-                                            <h5 class="text-nowrap mb-2">Toplam Kullanıcı</h5>
+                                            <h5 class="text-nowrap mb-2">Total Users</h5>
                                             <span class="badge bg-label-warning rounded-pill">@DateTime.Now.Year</span>
                                         </div>
                                         <div class="mt-sm-auto">            
@@ -96,7 +96,7 @@
                 <div class="card h-100">
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
                         <div class="card-title mb-0">
-                            <h5 class="m-0 me-2">Kategori İstatistikleri</h5>     
+                            <h5 class="m-0 me-2">Category Statistics</h5>     
                         </div>
                         <div class="dropdown">
                             <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,7 +113,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="d-flex flex-column align-items-center gap-1">
                                 <h2 class="mb-2">6</h2>
-                                <span>Toplam Kategori</span>
+                                <span>Total Categories</span>
                             </div>
                             <div id="orderStatisticsChart"></div>
                         </div>

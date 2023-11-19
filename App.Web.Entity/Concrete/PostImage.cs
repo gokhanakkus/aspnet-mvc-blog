@@ -17,7 +17,7 @@ namespace App.Web.Entity.Concrete
         [ForeignKey(nameof(PostId))]
         public virtual Post? Post { get; set; }
 
-        [MaxLength(600), Column(name: "Resim", TypeName = "nvarchar")]
+        [MaxLength(600), Column(name: "Image", TypeName = "nvarchar")]
         public string? ImagePath { get; set; }
     }
     

@@ -12,16 +12,16 @@ namespace App.Web.Mvc.Utils
             smtpClient.Connect("smtp.gmail.com", 587, false);
             smtpClient.Authenticate("projectmailservicegokhan@gmail.com", "bxfofccwnjyiyrug");
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Blog Sitesi", "projectmailservicegokhan@gmail.com"));
+            message.From.Add(new MailboxAddress("Blog Website", "projectmailservicegokhan@gmail.com"));
             message.To.Add(new MailboxAddress(user.Name, user.Email));
-            message.Subject = "Şifre Sıfırlama Talebi";
+            message.Subject = "Password Reset Request";
             message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = $"Kullanıcı Bilgileri : <hr /> " +
-                $"Ad : {user.Name} <hr /> " +
+                Text = $"User Information : <hr /> " +
+                $"Name : {user.Name} <hr /> " +
                 $"Email : {user.Email} <hr /> " +
-                $"Bilgilerine sahip kullanıcı şifre sıfırlama talebiniz alınmıştır.  <hr />" +
-                $"Devam etmek için <a href='https://localhost:7239/Auth/UpdatePassword?newPassword={user.Id}' >Buraya</a> tıklayınız."
+                $"A password reset request has been received for the user with the above information. <hr />" +
+                $"To proceed, click <a href='https://localhost:7239/Auth/UpdatePassword?newPassword={user.Id}' >Here</a> tıklayınız."
             };
 
             smtpClient.Send(message);

@@ -1,10 +1,10 @@
 ﻿@model App.Web.Entity.Concrete.PostComment
 @{
-    ViewData["Title"] = "Yorum Düzenle";
+    ViewData["Title"] = "Edit Comment";
 }
 
 <div class="container">
-    <h4 class="my-4">Yorum Düzenle</h4>
+    <h4 class="my-4">Edit Comment</h4>
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Update" method="post">
@@ -13,7 +13,7 @@
                 <input type="hidden" asp-for="UserId" />
                 <input type="hidden" asp-for="PostId" />
                 <div class="form-group mb-3">
-                    <label asp-for="Comment" class="control-label">Yorum</label>
+                    <label asp-for="Comment" class="control-label">Comment</label>
                     <input asp-for="Comment" class="form-control" disabled />
                     <span asp-validation-for="Comment" class="text-danger"></span>
                 </div>
@@ -23,7 +23,7 @@
                     </label>
                 </div>
                 <div class="form-group mb-3">
-                    <a asp-action="Index" class="btn btn-secondary">Yorum Listesine Dön</a>
+                    <a asp-action="Index" class="btn btn-secondary">Return Comment List</a>
                     <input type="submit" value="Kaydet" class="btn btn-primary ml-2" />
                 </div>
             </form>

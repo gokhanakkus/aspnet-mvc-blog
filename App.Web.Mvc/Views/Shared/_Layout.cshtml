@@ -49,6 +49,8 @@
     <script src="~/lib/bootstrap/dist/js/gmap.js"></script>
     <!-- main js -->
     <script src="~/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         function toggleDropdown() {
             var userOptions = document.getElementById("user-options");
@@ -85,7 +87,7 @@
 
                 messageBox.css({
                     position: 'fixed',
-                    top: '10px', // Sayfanın üstünden başlıyor
+                    top: '150px', // Sayfanın üstünden başlıyor
                     right: '-400px', // Ekranın dışında başlıyor
                     backgroundColor: '#f8efea',
                     color: '#333',
@@ -113,6 +115,13 @@
                 });
             }
 
+        </script>
+        <script>
+            $(document).ready(function () {
+                // Initialize Bootstrap components
+                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="popover"]').popover();
+            });
         </script>
     }
 

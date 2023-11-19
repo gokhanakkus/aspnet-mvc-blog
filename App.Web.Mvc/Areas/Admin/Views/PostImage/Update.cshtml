@@ -1,10 +1,10 @@
 ﻿@model App.Web.Entity.Concrete.PostImage
 @{
-    ViewData["Title"] = "Resim Düzenle";
+    ViewData["Title"] = "Edit Image";
 }
 
 <div class="container my-5">
-    <h2 class="text-center">Resim Düzenle</h2>
+    <h2 class="text-center">Edit Image</h2>
     <hr />
 
     <div class="row justify-content-center">
@@ -13,7 +13,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                 <div class="form-group mb-3">
-                    <label asp-for="PostId" class="form-label">Gönderi:</label>
+                    <label asp-for="PostId" class="form-label">Post:</label>
                     <select asp-for="PostId" class="form-select">
                         @foreach (var post in ViewBag.PostId)
                         {
@@ -23,15 +23,15 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label asp-for="ImagePath" class="form-label">Resim:</label>
+                    <label asp-for="ImagePath" class="form-label">Image:</label>
                     <img src="@Model.ImagePath" alt="Current Image" class="img-fluid" />
                     <input asp-for="ImagePath" type="file" class="form-control" />
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
-                    <a asp-action="Index" class="btn btn-secondary">Görsel Listesine Dön</a>
-                    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary">Post Listesine Dön</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary">Return To Image List</a>
+                    <a asp-controller="Blogs" asp-action="Index" class="btn btn-secondary">Return To Post List</a>
                 </div>
             </form>
         </div>

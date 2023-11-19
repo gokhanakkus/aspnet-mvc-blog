@@ -1,20 +1,20 @@
 ﻿﻿@{
     @model App.Web.Entity.Concrete.User
 
-    ViewData["Title"] = "Kayıt Ol";
+    ViewData["Title"] = "Register";
 }
 
 <div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="text-center font-weight-light my-4">Kayıt Ol</h3></div>
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Register</h3></div>
                 <div class="card-body">
 
                     <form asp-action="Register" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-floating mb-3">
-                            <label asp-for="Name">Ad</label>
+                            <label asp-for="Name">Name</label>
                             <input asp-for="Name" class="form-control" type="text" placeholder="Ad" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
@@ -26,18 +26,18 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label asp-for="Password">Parola</label>
-                            <input asp-for="Password" class="form-control" type="password" placeholder="Parola" />
+                            <label asp-for="Password">Password</label>
+                            <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="form-floating mb-3">
-                            <label asp-for="City">Şehir</label>
-                            <input asp-for="City" class="form-control" type="text" placeholder="Şehir" />
+                            <label asp-for="City">City</label>
+                            <input asp-for="City" class="form-control" type="text" placeholder="City" />
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                            <a class="btn btn-secondary" asp-action="Login">Zaten üye misiniz?</a>
-                            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                            <a class="btn btn-secondary" asp-action="Login">Already a member?</a>
+                            <button type="submit" class="btn btn-primary">Register</button>
                         </div>
                     </form>
                 </div>

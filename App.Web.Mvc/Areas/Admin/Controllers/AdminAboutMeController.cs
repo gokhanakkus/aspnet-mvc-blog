@@ -57,7 +57,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Düzenlenen sayfa bulunamadı.");
+                ModelState.AddModelError(string.Empty, "The edited page was not found.");
             }
 
             return View(page);

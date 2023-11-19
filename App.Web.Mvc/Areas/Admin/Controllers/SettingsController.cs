@@ -42,7 +42,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
+                    ModelState.AddModelError("", "There are incorrect entries. Please check.");
                 }
                 else
                 {
@@ -88,7 +88,7 @@ namespace App.Web.Mvc.Areas.Admin.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ModelState.AddModelError("", "Hatalı girdiler var. Lütfen kontrol ediniz.");
+                    ModelState.AddModelError("", "There are incorrect entries. Please check.");
                 }
                 else
                 {
